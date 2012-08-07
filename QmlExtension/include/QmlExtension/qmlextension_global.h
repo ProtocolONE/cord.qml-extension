@@ -1,0 +1,12 @@
+#ifndef QMLEXTENSION_GLOBAL_H
+#define QMLEXTENSION_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#ifdef QMLEXTENSION_LIB
+# define QMLEXTENSION_EXPORT Q_DECL_EXPORT
+#else
+# define QMLEXTENSION_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // QMLEXTENSION_GLOBAL_H
