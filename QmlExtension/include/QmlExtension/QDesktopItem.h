@@ -38,51 +38,54 @@
 **
 ****************************************************************************/
 
-#ifndef QTOPLEVELWINDOW_H
-#define QTOPLEVELWINDOW_H
+#ifndef QDESKTOPITEM_H
+#define QDESKTOPITEM_H
 
-#include <QDeclarativeView>
-#include <QMainWindow>
-#include <QWindowStateChangeEvent>
+#include <QtDeclarative>
 
 
 /*!
-  \class QTopLevelWindow
-  \brief Класс позволяет создать дополнительные окна. Исполузется в QWindowItem для создания дочерних окон приложения.
+  \class QDesktopItem
+  \brief Позволяет получать гемотрию экрана и уведомления о изменениях.
   \author Ilya.Tkachenko
   \date 10.08.2012
 */
-class QTopLevelWindow : public QMainWindow {
+class QDesktopItem : public QObject
+{
     Q_OBJECT
+
+    Q_PROPERTY(int screenWidth READ screenWidth NOTIFY screenGeometryChanged)
+    Q_PROPERTY(int screenHeight READ screenHeight NOTIFY screenGeometryChanged)
+    Q_PROPERTY(int availableWidth READ availableWidth NOTIFY availableGeometryChanged)
+    Q_PROPERTY(int availableHeight READ availableHeight NOTIFY availableGeometryChanged)
+    Q_PROPERTY(int screenCount READ screenCount NOTIFY screenCountChanged)
+
+    Q_PROPERTY(QRect primaryScreenAvailableGeometry READ primaryScreenAvailableGeometry NOTIFY primaryScreenAvailableGeometryChanged)
+
 public:
-    QTopLevelWindow();
-    ~QTopLevelWindow();
+    QDesktopItem(QObject* obj);
 
-    QGraphicsScene *scene() { return _view->scene(); }
-    QDeclarativeView *view() { return _view; }
+    int screenCount() const;
+    Q_INVOKABLE QRect screenGeometry(int screen) const;
+    Q_INVOKABLE QRect availableGeometry(int screen) const;
+    int screenWidth() const;
+    int screenHeight() const;
+    int availableWidth() const;
+    int availableHeight() const;
+    QRect primaryScreenAvailableGeometry() const;
 
-
-    void registerChildWindow(QTopLevelWindow* child);
-    void hideChildWindows();
-    void initPosition();
-    void setWindowFlags(Qt::WindowFlags type);
-
-    void center();
-    void move(int x, int y);
-    void move(const QPoint &);
-
-protected:
-    virtual bool event(QEvent *event);
+    static QDesktopItem *qmlAttachedProperties(QObject *obj);
+public slots:
+    void anythingChanged();
 
 Q_SIGNALS:
-    void visibilityChanged();
-    void windowStateChanged();
-    void sizeChanged(QSize newSize);
+    void screenGeometryChanged();
+    void availableGeometryChanged();
+    void screenCountChanged();
 
-private:
-    QDeclarativeView *_view;
-    bool _positionIsDefined;
-
+    void primaryScreenAvailableGeometryChanged();
 };
 
-#endif // QTOPLEVELWINDOW_H
+QML_DECLARE_TYPEINFO(QDesktopItem, QML_HAS_ATTACHED_PROPERTIES)
+
+#endif // QDesktopItemITEM_H

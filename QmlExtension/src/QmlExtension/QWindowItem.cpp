@@ -38,9 +38,6 @@
 **
 ****************************************************************************/
 
-//#include "qwindowitem.h"
-//#include "qtoplevelwindow.h"
-
 #include <QmlExtension/QWindowItem.h>
 #include <QmlExtension/QTopLevelWindow.h>
 
@@ -52,7 +49,6 @@ QWindowItem::QWindowItem()
     connect(_window, SIGNAL(visibilityChanged()), this, SIGNAL(visibleChanged()));
     connect(_window, SIGNAL(windowStateChanged()), this, SIGNAL(windowStateChanged()));
     connect(_window, SIGNAL(sizeChanged(QSize)), this, SLOT(updateSize(QSize)));
-
     view()->setResizeMode(QDeclarativeView::SizeRootObjectToView);
     _window->installEventFilter(this);
 }
@@ -238,4 +234,16 @@ void QWindowItem::close()
         deleteLater();
     else
         _window->hide();
+}
+
+void QWindowItem::setTopMost(bool value)
+{
+  bool visible = _window->isVisible();
+
+  _window->setWindowFlags( value ? _window->windowFlags() | Qt::WindowStaysOnTopHint
+    : _window->windowFlags() & ~Qt::WindowStaysOnTopHint);
+
+  if (visible)
+    _window->show();
+  emit topMostChanged();
 }

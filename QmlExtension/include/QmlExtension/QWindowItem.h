@@ -49,6 +49,12 @@
 #include <QMenuBar>
 
 
+/*!
+  \class QWindowItem
+  \brief Реализует логику по созданию дочернего окна приложения.
+  \author Ilya.Tkachenko
+  \date 10.08.2012
+*/
 class QWindowItem : public QDeclarativeItem
 {
     Q_OBJECT
@@ -67,6 +73,8 @@ class QWindowItem : public QDeclarativeItem
     Q_PROPERTY(bool deleteOnClose READ deleteOnClose WRITE setDeleteOnClose NOTIFY deleteOnCloseChanged)
     Q_PROPERTY(Qt::WindowState windowState READ windowState WRITE setWindowState NOTIFY windowStateChanged)
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
+
+    Q_PROPERTY(bool topMost READ topMost WRITE setTopMost NOTIFY topMostChanged)
 
 public:
     QWindowItem();
@@ -88,6 +96,7 @@ public:
     QString title() const { return _window->windowTitle(); }
     bool deleteOnClose() const { return _deleteOnClose; }
     Qt::WindowModality modality() const { return _window->windowModality(); }
+    bool topMost() const { return _window->windowFlags() & Qt::WindowStaysOnTopHint; }
 
     void setX(int x);
     void setY(int y);
@@ -103,6 +112,7 @@ public:
     void setTitle(QString title);
     void setModality(Qt::WindowModality modality);
     void setDeleteOnClose(bool close);
+    void setTopMost(bool value);
 
 public Q_SLOTS:
     void close();
@@ -132,6 +142,7 @@ Q_SIGNALS:
     void titleChanged();
     void modalityChanged();
     void deleteOnCloseChanged();
+    void topMostChanged();
 
 private:
     QTopLevelWindow *_window;

@@ -4,28 +4,21 @@
 #include <QDeclarativeItem>
 #include <QGraphicsSceneWheelEvent>
 
+
+/*!
+  \class WheelArea
+  \brief Класс реализует возможность получать события о горизонтально/вертикальном скролле мышки.
+  \author Ilya.Tkachenko
+  \date 10.08.2012
+*/
 class WheelArea : public QDeclarativeItem
 {
   Q_OBJECT
-
 public:
-  explicit WheelArea(QDeclarativeItem *parent = 0) : QDeclarativeItem(parent) {} 
+  explicit WheelArea(QDeclarativeItem *parent = 0); 
 
 protected:
-  void wheelEvent(QGraphicsSceneWheelEvent *event) {  
-    switch(event->orientation()) 
-    {
-    case Qt::Horizontal:
-      emit horizontalWheel(event->delta());
-      break;
-    case Qt::Vertical:
-      emit verticalWheel(event->delta());
-      break;
-    default:
-      event->ignore();
-      break;
-    }
-  }
+  void wheelEvent(QGraphicsSceneWheelEvent *event);
 
 signals:
   void verticalWheel(int delta);  

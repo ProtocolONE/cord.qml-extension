@@ -38,7 +38,6 @@
 **
 ****************************************************************************/
 
-//#include "qtoplevelwindow.h"
 #include <QmlExtension/QTopLevelWindow.h>
 
 #include <QDesktopWidget>
@@ -49,9 +48,22 @@ QTopLevelWindow::QTopLevelWindow()
     // Ensure that we have a default size, otherwise an empty window statement will
     // result in no window
 //    resize(QSize(100, 100));
+
+    setAttribute(Qt::WA_TranslucentBackground); //Эти две строчки позволят форме становиться прозрачной 
+    setStyleSheet("background:transparent;");
+    setWindowFlags( Qt::Window 
+      | Qt::FramelessWindowHint
+      | Qt::Tool
+      | Qt::WindowMinimizeButtonHint 
+      | Qt::WindowMaximizeButtonHint 
+      | Qt::WindowSystemMenuHint
+      ); //Этот код уберет все внешние элементы формы       
+
     _view->setBackgroundBrush(palette().window());
     setCentralWidget(_view);
+
 }
+
 
 QTopLevelWindow::~QTopLevelWindow()
 {
@@ -96,7 +108,6 @@ void QTopLevelWindow::center()
 
 void QTopLevelWindow::move(int x, int y)
 {
-    qDebug("a %d, %d", x, y);
     move(QPoint(x,y));
 }
 

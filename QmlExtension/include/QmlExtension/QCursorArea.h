@@ -29,6 +29,13 @@
 
 #include <QDeclarativeItem>
 
+
+/*!
+  \class QCursorArea
+  \brief Реализует воозможность менять курсор мышки.
+  \author Ilya.Tkachenko
+  \date 10.08.2012
+*/
 class QCursorArea : public QDeclarativeItem
 {
     Q_OBJECT
