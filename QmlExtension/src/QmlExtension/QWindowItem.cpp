@@ -247,3 +247,11 @@ void QWindowItem::setTopMost(bool value)
     _window->show();
   emit topMostChanged();
 }
+
+void QWindowItem::setFlags(int flags)
+{
+  if (flags != this->_window->windowFlags()) {
+    this->_window->setWindowFlags(static_cast<Qt::WindowFlags>(flags));
+    emit this->flagsChanged();
+  }
+}

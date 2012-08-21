@@ -75,6 +75,7 @@ class QWindowItem : public QDeclarativeItem
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
 
     Q_PROPERTY(bool topMost READ topMost WRITE setTopMost NOTIFY topMostChanged)
+    Q_PROPERTY(int flags READ flags WRITE setFlags NOTIFY flagsChanged)
 
 public:
     QWindowItem();
@@ -97,6 +98,7 @@ public:
     bool deleteOnClose() const { return _deleteOnClose; }
     Qt::WindowModality modality() const { return _window->windowModality(); }
     bool topMost() const { return _window->windowFlags() & Qt::WindowStaysOnTopHint; }
+    int flags() const { return _window->windowFlags(); }
 
     void setX(int x);
     void setY(int y);
@@ -113,7 +115,7 @@ public:
     void setModality(Qt::WindowModality modality);
     void setDeleteOnClose(bool close);
     void setTopMost(bool value);
-
+    void setFlags(int flags);
 public Q_SLOTS:
     void close();
 
@@ -143,6 +145,7 @@ Q_SIGNALS:
     void modalityChanged();
     void deleteOnCloseChanged();
     void topMostChanged();
+    void flagsChanged();
 
 private:
     QTopLevelWindow *_window;

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** This file is a part of Syncopate Limited GameNet Application or it parts.
 **
-** Copyright (�) 2011 - 2012, Syncopate Limited and/or affiliates. 
+** Copyright (©) 2011 - 2012, Syncopate Limited and/or affiliates. 
 ** All rights reserved.
 **
 ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
@@ -15,6 +15,14 @@
 #include <QmlExtension/QDesktopItem.h>
 #include <QmlExtension/SettingsAdapter.h>
 
+#include <QmlExtension/WebView/CustomNetworkManagerFactory.h>
+#include <QmlExtension/WebView/NetworkAccessManagerInteractor.h>
+
+#include <QtCore/QCoreApplication>
+
+using GGS::WebView::CustomNetworkManagerFactory;
+using GGS::WebView::NetworkAccessManagerInteractor;
+
 void QmlExtension::registerTypes(const char *uri)
 {
   qmlRegisterType<QCursorArea>("Tulip", 1, 0, "CursorArea");
@@ -23,10 +31,18 @@ void QmlExtension::registerTypes(const char *uri)
 
   qmlRegisterUncreatableType<QDesktopItem>("Tulip", 1, 0, "Desktop", QLatin1String("Do not create objects of type Desktop"));
   qmlRegisterUncreatableType<SettingsAdapter>("Tulip", 1, 0, "Settings", QLatin1String("Do not create objects of type Settings"));
+  qmlRegisterUncreatableType<NetworkAccessManagerInteractor>("Tulip", 1, 0, "WebViewHelper", QLatin1String("Do not create objects of type WebViewHelper"));
 }
 
 void QmlExtension::initializeEngine(QDeclarativeEngine *engine, const char *uri)
 {
+  NetworkAccessManagerInteractor::setDeclarativeView(engine);
+
+  CustomNetworkManagerFactory *customFactory = new CustomNetworkManagerFactory(engine);
+  engine->setNetworkAccessManagerFactory(customFactory);
+
+  //HACK Это единственный адекватный способ пробросить в дефолтный user-agent часть строки GNA
+  QCoreApplication::setApplicationName(QCoreApplication::applicationName() + " GNA");
 }
 
 #ifdef _DEBUG

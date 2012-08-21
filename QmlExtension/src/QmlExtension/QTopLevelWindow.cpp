@@ -47,21 +47,10 @@ QTopLevelWindow::QTopLevelWindow()
     setVisible(false);
     // Ensure that we have a default size, otherwise an empty window statement will
     // result in no window
-//    resize(QSize(100, 100));
+    // resize(QSize(100, 100));
 
-    setAttribute(Qt::WA_TranslucentBackground); //Эти две строчки позволят форме становиться прозрачной 
-    setStyleSheet("background:transparent;");
-    setWindowFlags( Qt::Window 
-      | Qt::FramelessWindowHint
-      | Qt::Tool
-      | Qt::WindowMinimizeButtonHint 
-      | Qt::WindowMaximizeButtonHint 
-      | Qt::WindowSystemMenuHint
-      ); //Этот код уберет все внешние элементы формы       
-
-    _view->setBackgroundBrush(palette().window());
+    setWindowFlags(Qt::Window);
     setCentralWidget(_view);
-
 }
 
 
@@ -120,6 +109,10 @@ void QTopLevelWindow::move(const QPoint &point)
 void QTopLevelWindow::setWindowFlags(Qt::WindowFlags type)
 {
     QWidget::setWindowFlags(type | Qt::Window);
+
+    setAttribute(Qt::WA_TranslucentBackground); //Эти две строчки позволят форме становиться прозрачной 
+    setStyleSheet("background:transparent;");
+    _view->setBackgroundBrush(palette().window());
 }
 
 bool QTopLevelWindow::event(QEvent *event) {
