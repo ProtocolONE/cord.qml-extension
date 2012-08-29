@@ -146,6 +146,7 @@ Q_SIGNALS:
     void deleteOnCloseChanged();
     void topMostChanged();
     void flagsChanged();
+    void beforeClosed();
 
 private:
     QTopLevelWindow *_window;

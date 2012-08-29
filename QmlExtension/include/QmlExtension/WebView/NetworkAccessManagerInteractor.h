@@ -11,7 +11,7 @@
 #ifndef __GGS_WEBVIEW_NETWORKACCESSMANAGERINTERACTOR_H
 #define __GGS_WEBVIEW_NETWORKACCESSMANAGERINTERACTOR_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include <QtDeclarative>
 
 namespace GGS {

@@ -5,6 +5,7 @@
     <CommonArea>trunk</CommonArea>
     <BugTrapArea>1.3.3718.38316</BugTrapArea>
     <SettingsArea>trunk</SettingsArea>
+    <CoreArea>trunk</CoreArea>
   </PropertyGroup>
   <PropertyGroup />
   <ItemDefinitionGroup />
@@ -19,6 +20,10 @@
     </BuildMacro>
     <BuildMacro Include="SettingsArea">
       <Value>$(SettingsArea)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="CoreArea">
+      <Value>$(CoreArea)</Value>
       <EnvironmentVariable>true</EnvironmentVariable>
     </BuildMacro>
   </ItemGroup>

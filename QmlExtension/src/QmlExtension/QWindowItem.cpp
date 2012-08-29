@@ -63,6 +63,7 @@ bool QWindowItem::eventFilter(QObject *, QEvent *ev)
     switch(ev->type()) {
     case QEvent::Close:
         ev->ignore();
+        emit this->beforeClosed();
         if (_deleteOnClose)
             deleteLater();
         else

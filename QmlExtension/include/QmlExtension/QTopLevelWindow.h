@@ -61,7 +61,6 @@ public:
     QGraphicsScene *scene() { return _view->scene(); }
     QDeclarativeView *view() { return _view; }
 
-
     void registerChildWindow(QTopLevelWindow* child);
     void hideChildWindows();
     void initPosition();
