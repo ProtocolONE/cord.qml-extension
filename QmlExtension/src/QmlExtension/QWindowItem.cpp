@@ -42,6 +42,7 @@
 #include <QmlExtension/QTopLevelWindow.h>
 
 #include <QTimer>
+#include <Windows.h>
 
 QWindowItem::QWindowItem()
     : _window(new QTopLevelWindow), _positionIsDefined(false), _delayedVisible(false), _deleteOnClose(true), _x(0), _y(0)
@@ -197,14 +198,15 @@ void QWindowItem::setVisible(bool visible)
 
 void QWindowItem::setWindowDecoration(bool s)
 {
-    bool visible = _window->isVisible();
+  bool visible = _window->isVisible();
 
+  _window->setWindowFlags(s ? _window->windowFlags() & ~Qt::FramelessWindowHint
+    : _window->windowFlags() | Qt::FramelessWindowHint);
 
-    _window->setWindowFlags(s ? _window->windowFlags() & ~Qt::FramelessWindowHint
-                              : _window->windowFlags() | Qt::FramelessWindowHint);
-    if (visible)
-        _window->show();
-    emit windowDecorationChanged();
+  if (visible)
+    _window->show();
+
+  emit windowDecorationChanged();
 }
 
 void QWindowItem::setModality(Qt::WindowModality modality)

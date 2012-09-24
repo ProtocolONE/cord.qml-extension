@@ -48,7 +48,6 @@ QTopLevelWindow::QTopLevelWindow()
     // Ensure that we have a default size, otherwise an empty window statement will
     // result in no window
     // resize(QSize(100, 100));
-
     setWindowFlags(Qt::Window);
     setCentralWidget(_view);
 }
