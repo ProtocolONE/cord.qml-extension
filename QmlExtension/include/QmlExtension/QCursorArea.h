@@ -52,7 +52,8 @@ public:
         SplitHCursor,
         SplitVCursor,
         WaitCursor,
-        PointingHandCursor
+        PointingHandCursor,
+        SizeFDiagCursor
     };
 
     explicit QCursorArea(QDeclarativeItem *parent = 0);

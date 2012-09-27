@@ -66,6 +66,9 @@ void QCursorArea::setCursor(Cursor cursor)
     case PointingHandCursor:
         QDeclarativeItem::setCursor(Qt::PointingHandCursor);
         break;
+    case SizeFDiagCursor:
+        QDeclarativeItem::setCursor(Qt::SizeFDiagCursor);
+      break;
     default:
         return;
     }
