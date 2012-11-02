@@ -99,5 +99,9 @@ namespace GGS {
       return result;
     }
 
+    void RegistryCredentialStorage::setCredentialPath(const QString& path)
+    {
+      this->_path = path;
+    }
   }
 }

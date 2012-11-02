@@ -23,6 +23,8 @@ namespace GGS {
       Q_INVOKABLE void save(const QString& userId, const QString& appKey, const QString& cookie, bool guest = false);
       Q_INVOKABLE QVariantMap load();
       Q_INVOKABLE void reset();
+      
+      Q_INVOKABLE void setCredentialPath(const QString& path);
 
       Q_INVOKABLE QVariantMap loadOldAuth();
 
