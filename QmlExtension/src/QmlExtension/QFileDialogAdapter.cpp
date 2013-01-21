@@ -18,3 +18,8 @@ Q_INVOKABLE QString QFileDialogAdapter::getOpenFileName(const QString& caption, 
 {
   return QFileDialog::getOpenFileName(0, caption, dir, filter);
 }
+
+Q_INVOKABLE QString QFileDialogAdapter::getExistingDirectory(const QString& caption, const QString& dir) const
+{
+  return QFileDialog::getExistingDirectory(0, caption, dir, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+}
