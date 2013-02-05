@@ -28,11 +28,15 @@ namespace GGS {
 
       Q_INVOKABLE QVariantMap loadOldAuth();
 
+      Q_INVOKABLE void saveGuest(const QString& userId, const QString& appKey, const QString& cookie);
+      Q_INVOKABLE QVariantMap loadGuest();
+
       static RegistryCredentialStorage *qmlAttachedProperties(QObject *obj);
 
     private:
       QString _path;
       QString calcHash(const QString &userId, const QString &appKey, const QString &cookie);
+      QString calcGuestHash(const QString &userId, const QString &appKey, const QString &cookie);
     };
   }
 }

@@ -103,5 +103,46 @@ namespace GGS {
     {
       this->_path = path;
     }
+
+    Q_INVOKABLE void RegistryCredentialStorage::saveGuest(const QString& userId, const QString& appKey, const QString& cookie)
+    {
+      QSettings settings(this->_path, QSettings::NativeFormat);
+      settings.setValue("guestUserId", userId);
+      settings.setValue("guestAppKey", appKey);
+      settings.setValue("guestCookie", cookie);
+      settings.setValue("guestCrc", this->calcGuestHash(userId, appKey, cookie));
+    }
+
+    Q_INVOKABLE QVariantMap RegistryCredentialStorage::loadGuest()
+    {
+      QSettings settings(this->_path, QSettings::NativeFormat);
+      if ( !settings.contains("guestUserId")
+        || !settings.contains("guestAppKey")
+        || !settings.contains("guestCookie")
+        || !settings.contains("guestCrc"))
+      {
+        return QVariantMap();
+      }
+
+      QString userId = settings.value("guestUserId", "").toString();
+      QString appKey = settings.value("guestAppKey", "").toString();
+      QString cookie = settings.value("guestCookie", "").toString();
+      QString crc = settings.value("guestCrc", "").toString();
+
+      if (this->calcGuestHash(userId, appKey, cookie) != crc)
+        return QVariantMap();
+
+      QVariantMap result;
+      result["userId"] = userId;
+      result["appKey"] = appKey;
+      result["cookie"] = cookie;
+      return result;
+    }
+
+    QString RegistryCredentialStorage::calcGuestHash(const QString &userId, const QString &appKey, const QString &cookie)
+    {
+      return this->calcHash(userId + "guest", appKey + "guest", cookie + "guest");
+    }
+
   }
 }
