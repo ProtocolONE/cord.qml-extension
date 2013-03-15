@@ -172,6 +172,9 @@
     <ClCompile Include="src\QmlExtension\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\QmlExtension\WebView\PersistentCookieJar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="include\QmlExtension\QmlExtension.h">
@@ -214,6 +217,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="include\QmlExtension\App.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\WebView\PersistentCookieJar.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

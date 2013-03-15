@@ -52,10 +52,11 @@ void QmlExtension::registerTypes(const char *uri)
 
 void QmlExtension::initializeEngine(QDeclarativeEngine *engine, const char *uri)
 {
-  NetworkAccessManagerInteractor::setDeclarativeView(engine);
-
   CustomNetworkManagerFactory *customFactory = new CustomNetworkManagerFactory(engine);
   engine->setNetworkAccessManagerFactory(customFactory);
+  
+  NetworkAccessManagerInteractor::setDeclarativeView(engine);
+  NetworkAccessManagerInteractor::setCookieJar(customFactory->cookieJar());
 
   //HACK Это единственный адекватный способ пробросить в дефолтный user-agent часть строки GNA
   QCoreApplication::setApplicationName(QCoreApplication::applicationName() + " GNA");

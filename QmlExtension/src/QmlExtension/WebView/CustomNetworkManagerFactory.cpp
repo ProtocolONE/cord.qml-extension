@@ -1,10 +1,13 @@
+#include <QtCore/QDebug>
 #include <QmlExtension/WebView/CustomNetworkManagerFactory.h>
+#include <QmlExtension/WebView/PersistentCookieJar.h>
 
 namespace GGS {
   namespace WebView {
 
     CustomNetworkManagerFactory::CustomNetworkManagerFactory(QObject *parent) : QObject(parent)
     {
+      this->_cookieJar = new PersistentCookieJar(this);
     }
 
     /*!
@@ -23,6 +26,7 @@ namespace GGS {
     QNetworkAccessManager* CustomNetworkManagerFactory::create(QObject *parent)
     {
       this->_networkManager = new QNetworkAccessManager(this);
+      this->_networkManager->setCookieJar(this->_cookieJar);
 
       connect(this->_networkManager,SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)),
         this,SLOT(onIgnoreSSLErrors(QNetworkReply*, QList<QSslError>)));
@@ -33,6 +37,11 @@ namespace GGS {
     void CustomNetworkManagerFactory::onIgnoreSSLErrors(QNetworkReply *reply, QList<QSslError> error)
     {
       reply->ignoreSslErrors(error);
+    }
+
+    PersistentCookieJar* CustomNetworkManagerFactory::cookieJar() const
+    {
+      return this->_cookieJar;
     }
   }
 }

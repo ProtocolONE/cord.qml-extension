@@ -8,14 +8,14 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
 
-#ifndef __GGS_WEBVIEW_NETWORKACCESSMANAGERINTERACTOR_H
-#define __GGS_WEBVIEW_NETWORKACCESSMANAGERINTERACTOR_H
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtDeclarative>
 
 namespace GGS {
   namespace WebView {
+    class PersistentCookieJar;
 
     class NetworkAccessManagerInteractor : public QObject
     {
@@ -24,18 +24,23 @@ namespace GGS {
       explicit NetworkAccessManagerInteractor(QObject *parent = 0);
       ~NetworkAccessManagerInteractor();
 
-      static void setDeclarativeView(QDeclarativeEngine* view);
       static NetworkAccessManagerInteractor *qmlAttachedProperties(QObject *obj);
+      
+      static void setDeclarativeView(QDeclarativeEngine* view);
+      static void setCookieJar(PersistentCookieJar* value);
 
     public slots:
       void clearCookies();
+      void clearAllCookies();
+
+      void setCookiesFromUrl(const QString &cookies, const QString &url);
+      QString &cookiesForUrl(const QString &url);
 
     private:
       static QDeclarativeEngine* _declarativeEngine;
+      static PersistentCookieJar* _cookieJar;
     };
   }
 }
 
 QML_DECLARE_TYPEINFO(GGS::WebView::NetworkAccessManagerInteractor, QML_HAS_ATTACHED_PROPERTIES)
-  
-#endif // __GGS_WEBVIEW_NETWORKACCESSMANAGERINTERACTOR_H

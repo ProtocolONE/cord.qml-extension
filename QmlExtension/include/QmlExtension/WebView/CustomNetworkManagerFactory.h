@@ -19,6 +19,7 @@
 
 namespace GGS {
   namespace WebView {
+    class PersistentCookieJar;
 
     class CustomNetworkManagerFactory : public QObject, public QDeclarativeNetworkAccessManagerFactory
     {
@@ -27,11 +28,13 @@ namespace GGS {
       explicit CustomNetworkManagerFactory(QObject *parent = 0);
       virtual QNetworkAccessManager *create(QObject *parent);
 
+      PersistentCookieJar* cookieJar() const;
     public slots:
       void onIgnoreSSLErrors(QNetworkReply* reply, QList<QSslError> error);
 
     private:
       QNetworkAccessManager* _networkManager;
+      PersistentCookieJar *_cookieJar;
     };
 
   }
