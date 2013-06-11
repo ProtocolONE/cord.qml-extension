@@ -8,20 +8,17 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
 
-#ifndef QMLEXTENSION_H
-#define QMLEXTENSION_H
+#pragma once
 
 #include <QmlExtension/qmlextension_global.h>
-
 #include <QtDeclarative/QDeclarativeExtensionPlugin>
 
 class QmlExtension : public QDeclarativeExtensionPlugin
 {
   Q_OBJECT
+  Q_PLUGIN_METADATA(IID "Tulip" FILE "tulip.json")
 
 public:
   void registerTypes(const char *uri);
   void initializeEngine(QDeclarativeEngine *engine, const char *uri);
 };
-
-#endif // QMLEXTENSION_H

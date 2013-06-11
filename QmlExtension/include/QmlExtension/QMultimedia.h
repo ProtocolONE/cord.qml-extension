@@ -13,7 +13,7 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
-#include <QtDeclarative/QtDeclarative>
+#include <QtDeclarative/QDeclarative.h>
 
 /*!
   \class Phonon

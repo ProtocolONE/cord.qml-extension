@@ -38,11 +38,11 @@
 **
 ****************************************************************************/
 
-#ifndef QDESKTOPITEM_H
-#define QDESKTOPITEM_H
+#pragma once
 
-#include <QtDeclarative>
-
+#include <QtCore/QObject>
+#include <QtWidgets/QDesktopWidget>
+#include <QtDeclarative/QDeclarative.h>
 
 /*!
   \class QDesktopItem
@@ -90,5 +90,3 @@ Q_SIGNALS:
 };
 
 QML_DECLARE_TYPEINFO(QDesktopItem, QML_HAS_ATTACHED_PROPERTIES)
-
-#endif // QDesktopItemITEM_H

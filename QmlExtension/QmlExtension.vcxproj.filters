@@ -35,66 +35,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\QmlExtension\qmlextension_global.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\QmlExtension\WebView\PersistentCookieJar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QmlExtension\qmlextension_global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\QmlExtension\QmlExtension.cpp">
+    <ClCompile Include="src\QmlExtension\Auth\RegistryCredentialStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QmlExtension.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QmlExtension.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QCursorArea.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QCursorArea.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\QCursorArea.cpp">
+    <ClCompile Include="src\QmlExtension\WebView\CustomNetworkManagerFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_WheelArea.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_WheelArea.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QTopLevelWindow.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QTopLevelWindow.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QWindowItem.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QWindowItem.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\QTopLevelWindow.cpp">
+    <ClCompile Include="src\QmlExtension\WebView\NetworkAccessManagerInteractor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\QWindowItem.cpp">
+    <ClCompile Include="src\QmlExtension\WebView\PersistentCookieJar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QDesktopItem.cpp">
-      <Filter>Generated Files\Debug</Filter>
+    <ClCompile Include="src\QmlExtension\App.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QDesktopItem.cpp">
-      <Filter>Generated Files\Release</Filter>
+    <ClCompile Include="src\QmlExtension\GoogleAnalytics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\MarketingAdapter.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\QmlExtension\QDesktopItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\QFileDialogAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\QmlExtension\SettingsAdapter.cpp">
@@ -106,38 +85,17 @@
     <ClCompile Include="GeneratedFiles\Release\moc_SettingsAdapter.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\WheelArea.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CustomNetworkManagerFactory.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_QFileDialogAdapter.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CustomNetworkManagerFactory.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_QFileDialogAdapter.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\WebView\CustomNetworkManagerFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_NetworkAccessManagerInteractor.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_QDesktopItem.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_NetworkAccessManagerInteractor.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_QDesktopItem.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\WebView\NetworkAccessManagerInteractor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\Auth\RegistryCredentialStorage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_RegistryCredentialStorage.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_RegistryCredentialStorage.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\MarketingAdapter.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_MarketingAdapter.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -145,22 +103,10 @@
     <ClCompile Include="GeneratedFiles\Release\moc_MarketingAdapter.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\GoogleAnalytics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_GoogleAnalytics.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_GoogleAnalytics.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\QFileDialogAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QFileDialogAdapter.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QFileDialogAdapter.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_App.cpp">
@@ -169,19 +115,40 @@
     <ClCompile Include="GeneratedFiles\Release\moc_App.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\WebView\PersistentCookieJar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QMultimedia.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_NetworkAccessManagerInteractor.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QMultimedia.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_NetworkAccessManagerInteractor.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\QMultimedia.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_CustomNetworkManagerFactory.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CustomNetworkManagerFactory.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_RegistryCredentialStorage.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_RegistryCredentialStorage.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Tulip.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Tulip.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tulip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QWindowItem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QWindowItem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\QWindowItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\QmlExtension\TrayWindow.cpp">
@@ -231,34 +198,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="include\QmlExtension\QmlExtension.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\QCursorArea.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\WheelArea.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\QTopLevelWindow.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\QWindowItem.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\QDesktopItem.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="include\QmlExtension\SettingsAdapter.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\WebView\CustomNetworkManagerFactory.h">
+    <CustomBuild Include="include\QmlExtension\QFileDialogAdapter.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\WebView\NetworkAccessManagerInteractor.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\Auth\RegistryCredentialStorage.h">
+    <CustomBuild Include="include\QmlExtension\QDesktopItem.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="include\QmlExtension\MarketingAdapter.h">
@@ -267,16 +213,22 @@
     <CustomBuild Include="include\QmlExtension\GoogleAnalytics.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\QFileDialogAdapter.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="include\QmlExtension\App.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\WebView\PersistentCookieJar.h">
+    <CustomBuild Include="include\QmlExtension\WebView\NetworkAccessManagerInteractor.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\QMultimedia.h">
+    <CustomBuild Include="include\QmlExtension\WebView\CustomNetworkManagerFactory.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\Auth\RegistryCredentialStorage.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\Tulip.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\QWindowItem.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="include\QmlExtension\traywindow.h">
@@ -297,5 +249,8 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="QmlExtension.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tulip.json" />
   </ItemGroup>
 </Project>

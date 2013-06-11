@@ -1,6 +1,7 @@
 #pragma once
 
-#include <QtDeclarative>
+#include <QtCore/QObject>
+#include <QtDeclarative/QDeclarative.h>
 
 class GoogleAnalytics : public QObject
 {

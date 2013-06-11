@@ -11,7 +11,8 @@
 #pragma once
 
 #include <QtCore/QObject>
-#include <QtDeclarative>
+#include <QtDeclarative/QDeclarative.h>
+#include <QtDeclarative/QDeclarativeEngine>
 
 namespace GGS {
   namespace WebView {

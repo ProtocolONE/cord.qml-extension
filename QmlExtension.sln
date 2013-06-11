@@ -22,7 +22,15 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
+<<<<<<< HEAD
 	GlobalSection(NestedProjects) = preSolution
 		{1E2097B0-52DC-4F2C-9783-67DF96BBA73A} = {2603226D-B03A-41B7-8BFD-03ACE8BC9745}
+=======
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		Qt5Version = $(DefaultQtVersion)
+>>>>>>> 10e6b27... QGNA-0 Qt5 support
 	EndGlobalSection
+=======
+>>>>>>> 37f521a... QGNA-448 Qt5
 EndGlobal

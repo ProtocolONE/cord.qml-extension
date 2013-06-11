@@ -65,7 +65,7 @@ namespace GGS {
     void PersistentCookieJar::setCookiesFromUrl(const QString &cookies, const QString &url)
     {
       if (cookies.length() > 0) {
-         QNetworkCookieJar::setCookiesFromUrl(QNetworkCookie::parseCookies(cookies.toAscii()), QUrl(url));
+         QNetworkCookieJar::setCookiesFromUrl(QNetworkCookie::parseCookies(cookies.toLocal8Bit()), QUrl(url));
          return;
       }
         

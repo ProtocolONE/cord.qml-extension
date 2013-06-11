@@ -1,4 +1,5 @@
 #include <QmlExtension/MarketingAdapter.h>
+#include <QtCore/QSettings>
 
 using GGS::Core::Marketing;
 

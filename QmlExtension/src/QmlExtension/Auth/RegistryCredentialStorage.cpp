@@ -79,9 +79,9 @@ namespace GGS {
       //менять не исправляя синхронно код gnalogin/getCredential который нужен
       //для работы фичи "авторизация из инсталлятора" 
       QCryptographicHash hash(QCryptographicHash::Sha1);
-      hash.addData(userId.toAscii());
-      hash.addData(appKey.toAscii());
-      hash.addData(cookie.toAscii());
+      hash.addData(userId.toLocal8Bit());
+      hash.addData(appKey.toLocal8Bit());
+      hash.addData(cookie.toLocal8Bit());
       return QString(hash.result().toHex());
     }
 

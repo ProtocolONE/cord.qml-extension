@@ -1,4 +1,5 @@
 #include <QmlExtension/GoogleAnalytics.h>
+#include <QtCore/QLocale>
 #include <windows.h>
 
 GoogleAnalytics::GoogleAnalytics(QObject* obj)  : QObject(obj)

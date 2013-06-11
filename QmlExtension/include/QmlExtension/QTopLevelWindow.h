@@ -38,13 +38,11 @@
 **
 ****************************************************************************/
 
-#ifndef QTOPLEVELWINDOW_H
-#define QTOPLEVELWINDOW_H
+#pragma once
 
-#include <QDeclarativeView>
-#include <QMainWindow>
-#include <QWindowStateChangeEvent>
-
+#include <QtDeclarative\QDeclarativeView>
+#include <QtWidgets\QMainWindow>
+#include <QtGui\QWindowStateChangeEvent>
 
 /*!
   \class QTopLevelWindow
@@ -83,5 +81,3 @@ private:
     bool _positionIsDefined;
 
 };
-
-#endif // QTOPLEVELWINDOW_H

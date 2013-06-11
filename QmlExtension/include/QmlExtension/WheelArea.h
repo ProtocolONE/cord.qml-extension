@@ -1,9 +1,7 @@
-#ifndef WHEELAREA_H
-#define WHEELAREA_H
+#pragma once
 
-#include <QDeclarativeItem>
-#include <QGraphicsSceneWheelEvent>
-
+#include <QtDeclarative\QDeclarativeItem>
+#include <QtWidgets\QGraphicsSceneWheelEvent>
 
 /*!
   \class WheelArea
@@ -24,5 +22,3 @@ signals:
   void verticalWheel(int delta);  
   void horizontalWheel(int delta);       
 };
-
-#endif // WHEELAREA_H

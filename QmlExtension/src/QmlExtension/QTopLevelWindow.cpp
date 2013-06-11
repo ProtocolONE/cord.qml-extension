@@ -40,7 +40,7 @@
 
 #include <QmlExtension/QTopLevelWindow.h>
 
-#include <QDesktopWidget>
+#include <QtWidgets\QDesktopWidget>
 
 QTopLevelWindow::QTopLevelWindow()
     : QMainWindow(), _view(new QDeclarativeView), _positionIsDefined(false) {

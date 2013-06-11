@@ -2,7 +2,7 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QVariantMap>
-#include <QtDeclarative>
+#include <QtDeclarative/QDeclarative.h>
 
 namespace GGS {
   namespace Auth {

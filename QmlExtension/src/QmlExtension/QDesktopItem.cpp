@@ -39,8 +39,16 @@
 ****************************************************************************/
 #include <QmlExtension/QDesktopItem.h>
 
+<<<<<<< HEAD
 #include <QtCore/QPoint>
 #include <QtGui/QApplication>
+=======
+#include <QtWidgets/QApplication>
+<<<<<<< HEAD
+#include <QtWidgets/QDesktopWidget>
+>>>>>>> 10e6b27... QGNA-0 Qt5 support
+=======
+>>>>>>> 37f521a... QGNA-448 Qt5
 
 QDesktopItem::QDesktopItem(QObject* obj) : QObject(obj) {
     connect(QApplication::desktop(), SIGNAL(resized(int)), this, SIGNAL(screenGeometryChanged()));

@@ -7,12 +7,21 @@
 ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
+
 #pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QVariant>
+<<<<<<< HEAD
+<<<<<<< HEAD
 #include <QtDeclarative/QtDeclarative>
+=======
+#include <QtQml>
+>>>>>>> 10e6b27... QGNA-0 Qt5 support
+=======
+#include <QtDeclarative/QDeclarative.h>
+>>>>>>> 37f521a... QGNA-448 Qt5
 
 /*!
   \class SettingsAdapter
@@ -34,4 +43,8 @@ public:
   static SettingsAdapter *qmlAttachedProperties(QObject *obj);
 };
 
+<<<<<<< HEAD
 QML_DECLARE_TYPEINFO(SettingsAdapter, QML_HAS_ATTACHED_PROPERTIES)
+=======
+QML_DECLARE_TYPEINFO(SettingsAdapter, QML_HAS_ATTACHED_PROPERTIES)
+>>>>>>> 10e6b27... QGNA-0 Qt5 support

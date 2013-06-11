@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="Conan-RootDirs">
+    <Conan-Core-Root>$(USERPROFILE)/.conan/data/Core/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7</Conan-Core-Root>
+    <Conan-Settings-Root>$(USERPROFILE)/.conan/data/Settings/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7</Conan-Settings-Root>
+    <Conan-QtYaml-Root>$(USERPROFILE)/.conan/data/QtYaml/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7</Conan-QtYaml-Root>
+    <Conan-yaml-cpp-Root>$(USERPROFILE)/.conan/data/yaml-cpp/0.6.2/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7</Conan-yaml-cpp-Root>
+  </PropertyGroup>
+  <PropertyGroup Label="ConanVariables">
+    <ConanBinaryDirectories></ConanBinaryDirectories>
+    <ConanResourceDirectories></ConanResourceDirectories>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LocalDebuggerEnvironment>PATH=%PATH%;</LocalDebuggerEnvironment>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(USERPROFILE)/.conan/data/Core/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/Settings/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/QtYaml/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/yaml-cpp/0.6.2/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SETTINGS_STATIC_LIB;CORE_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(USERPROFILE)/.conan/data/Core/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/lib;$(USERPROFILE)/.conan/data/Settings/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/lib;$(USERPROFILE)/.conan/data/QtYaml/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/lib;$(USERPROFILE)/.conan/data/yaml-cpp/0.6.2/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Corex86d.lib;Settingsx86d.lib;QtYamlx86d.lib;libyaml-cppmdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Midl>
+      <AdditionalIncludeDirectories>$(USERPROFILE)/.conan/data/Core/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/Settings/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/QtYaml/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/yaml-cpp/0.6.2/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(USERPROFILE)/.conan/data/Core/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/Settings/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/QtYaml/1.0.0/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;$(USERPROFILE)/.conan/data/yaml-cpp/0.6.2/common/stable/package/67178596ee76c07b8d1b80456387bd6b32b5e6b7/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SETTINGS_STATIC_LIB;CORE_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

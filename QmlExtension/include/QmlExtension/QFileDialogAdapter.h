@@ -1,6 +1,7 @@
 #pragma once
 
-#include <QtDeclarative>
+#include <QtDeclarative/QDeclarative.h>
+#include <QtCore/QObject>
 #include <QtCore/QString>
 
 class QFileDialogAdapter : public QObject

@@ -43,10 +43,10 @@
 
 #include "qtoplevelwindow.h"
 
-#include <QtGui/QApplication>
-#include <QDeclarativeItem>
-#include <QDeclarativeView>
-#include <QMenuBar>
+#include <QtWidgets/QApplication>
+#include <QtDeclarative\QDeclarativeItem>
+#include <QtDeclarative\QDeclarativeView>
+#include <QtWidgets\QMenuBar>
 
 
 /*!
@@ -115,7 +115,17 @@ public:
     void setModality(Qt::WindowModality modality);
     void setDeleteOnClose(bool close);
     void setTopMost(bool value);
+<<<<<<< HEAD
+<<<<<<< HEAD
     void setFlags(int flags);
+=======
+
+    void setFlags(Qt::WindowFlags flags);
+
+>>>>>>> 10e6b27... QGNA-0 Qt5 support
+=======
+    void setFlags(int flags);
+>>>>>>> 37f521a... QGNA-448 Qt5
 
 public Q_SLOTS:
     void close();

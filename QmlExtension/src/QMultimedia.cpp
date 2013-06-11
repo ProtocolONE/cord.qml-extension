@@ -9,7 +9,7 @@
 ****************************************************************************/
 
 #include <QmlExtension/QMultimedia.h>
-#include <QtGui/QSound>
+#include <QtMultimedia/QSound>
 
 QMultimedia::QMultimedia(QObject* parent) {
 }

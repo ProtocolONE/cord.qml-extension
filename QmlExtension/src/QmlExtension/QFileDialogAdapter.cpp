@@ -1,4 +1,5 @@
 #include <QmlExtension/QFileDialogAdapter.h>
+#include <QtWidgets/QFileDialog>
 
 QFileDialogAdapter::QFileDialogAdapter(QObject* obj)
    : QObject(obj)
