@@ -7,7 +7,7 @@ namespace GGS {
 
     CustomNetworkManagerFactory::CustomNetworkManagerFactory(QObject *parent) : QObject(parent)
     {
-      this->_cookieJar = new PersistentCookieJar(this);
+      this->_cookieJar = new PersistentCookieJar(parent);
     }
 
     /*!
@@ -25,7 +25,7 @@ namespace GGS {
 
     QNetworkAccessManager* CustomNetworkManagerFactory::create(QObject *parent)
     {
-      this->_networkManager = new QNetworkAccessManager(this);
+      this->_networkManager = new QNetworkAccessManager(parent);
       this->_networkManager->setCookieJar(this->_cookieJar);
 
       connect(this->_networkManager,SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)),
