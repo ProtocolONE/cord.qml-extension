@@ -15,18 +15,18 @@
 #include <QtDeclarative\QDeclarativeView>
 #include <QtDeclarative\QDeclarativeItem>
 
-class TrayWindow : public QDeclarativeItem
+class TrayWindow : public QObject
 {
 	Q_OBJECT
-
 public:
 	TrayWindow(QObject* parent = 0);
-	~TrayWindow();
+	virtual ~TrayWindow();
 
 	static TrayWindow *qmlAttachedProperties(QObject *obj);
 
 public slots:
 	void install(const QString& icon);
+	void hide();
 
 signals:
 	void activate();

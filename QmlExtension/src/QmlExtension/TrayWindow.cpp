@@ -12,7 +12,8 @@
 
 #define SIGNAL_CONNECT_CHECK(X) { bool result = X; Q_ASSERT_X(result, __FUNCTION__ , #X); }
 
-TrayWindow::TrayWindow(QObject* parent) :
+TrayWindow::TrayWindow(QObject* parent) 
+	: QObject(parent),
 	_systray(0)
 {
 }
@@ -34,6 +35,10 @@ void TrayWindow::install(const QString& icon) {
 
 TrayWindow::~TrayWindow()
 {
+  this->hide();
+}
+
+void TrayWindow::hide() {
   if (this->_systray)
 	this->_systray->hide();
 }
