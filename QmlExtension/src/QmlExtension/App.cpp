@@ -8,8 +8,11 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
 
-#include <QtCore/QCoreApplication>
+
 #include <QmlExtension/App.h>
+#include <Core/System/HardwareId.h>
+
+#include <QtCore/QCoreApplication>
 
 App::App(QObject *parent)
   : QObject(parent)
@@ -27,4 +30,9 @@ App* App::qmlAttachedProperties(QObject *obj)
 
 QStringList App::arguments() {
   return QCoreApplication::arguments();
+}
+
+QString App::hwid()
+{
+  return GGS::Core::System::HardwareId::value();
 }

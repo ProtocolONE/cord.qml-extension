@@ -23,6 +23,7 @@ public:
   ~App();
 
   Q_INVOKABLE QStringList arguments();
+  Q_INVOKABLE QString hwid();
 
   static App *qmlAttachedProperties(QObject *obj);
 };
