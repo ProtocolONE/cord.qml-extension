@@ -18,6 +18,7 @@
 #include <QmlExtension/GoogleAnalytics.h>
 #include <QmlExtension/QFileDialogAdapter.h>
 #include <QmlExtension/QMultimedia.h>
+#include <QmlExtension/QPing.h>
 #include <QmlExtension/traywindow.h>
 
 #include <QmlExtension/WebView/CustomNetworkManagerFactory.h>
@@ -46,6 +47,7 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<GGS::Auth::RegistryCredentialStorage>("Tulip", 1, 0, "CredentialStorage", QLatin1String("Do not create objects of type CredentialStorage"));
   qmlRegisterUncreatableType<GoogleAnalytics>("Tulip", 1, 0, "GoogleAnalyticsHelper", QLatin1String("Do not create objects of type GoogleAnalyticsHelper"));
   qmlRegisterUncreatableType<QMultimedia>("Tulip", 1, 0, "QMultimedia", QLatin1String("Do not create objects of type QMultimedia"));
+  qmlRegisterUncreatableType<QPing>("Tulip", 1, 0, "QPing", QLatin1String("Do not create objects of type QPing"));
   qmlRegisterUncreatableType<TrayWindow>("Tulip", 1, 0, "TrayWindow", QLatin1String("Do not create objects of type TrayWindow"));
   
   // UNDONE: решить какой вариант регистрации подойдет  
