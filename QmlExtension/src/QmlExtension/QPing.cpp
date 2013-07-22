@@ -8,10 +8,12 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
 
+
 #include <QmlExtension/QPing.h>
 #include <winsock2.h>
 #include <iphlpapi.h>
 #include <icmpapi.h>
+#include <winternl.h>
 
 #ifdef WIN32
 #pragma comment(lib, "iphlpapi.lib")
@@ -19,12 +21,13 @@
 #endif
 
 QPing::QPing(QObject* parent) {
+    this->watcher.cancel();
 }
 
 QPing::~QPing() {
 }
 
-int QPing::pingHost(QString url) 
+void QPing::sync(QString url) 
 {   
 #ifdef WIN32
     HANDLE hIcmpFile;
@@ -40,7 +43,8 @@ int QPing::pingHost(QString url)
         struct hostent * remoteHost = gethostbyname(host);
 
         if (remoteHost == NULL) {
-            return 0;
+            emit this->failed();
+            return;
         }
 
         if (remoteHost->h_addrtype == AF_INET) {
@@ -55,28 +59,47 @@ int QPing::pingHost(QString url)
         addr.s_addr = inet_addr(host);
 
         if (addr.s_addr == INADDR_NONE) {
-            return 0;
+            emit this->failed();
+            return;
         } 
     }
 
     hIcmpFile = IcmpCreateFile();
     if (hIcmpFile == INVALID_HANDLE_VALUE) {
-        return 0;
+        emit this->failed();
+        return;
     }    
 
     ReplySize = sizeof(ICMP_ECHO_REPLY) + sizeof(SendData);
     ReplyBuffer = (VOID*) malloc(ReplySize);
     if (ReplyBuffer == NULL) {
-        return 0;
-    }    
+        emit this->failed();
+        return;
+    }  
 
-    return IcmpSendEcho(hIcmpFile, addr.s_addr, SendData, sizeof(SendData), 
+    dwRetVal = IcmpSendEcho(hIcmpFile, addr.s_addr, SendData, sizeof(SendData), 
         NULL, ReplyBuffer, ReplySize, 1000);
+
+    if (dwRetVal) {
+        PICMP_ECHO_REPLY pEchoReply = (PICMP_ECHO_REPLY)ReplyBuffer;
+        struct in_addr ReplyAddr;
+        emit this->success(pEchoReply->RoundTripTime);
+        return;
+    }
+    
+    emit this->failed();
 #else
-    return 0;
+    return;       
 #endif
 }
 
-QPing *QPing::qmlAttachedProperties(QObject *obj) {
-    return new QPing(obj);
+void QPing::start(QString url) 
+{   
+    if (watcher.isRunning()) {
+        qDebug() << "Warning, ping allready in progress";
+        return;
+    }
+
+    QFuture<void> result = QtConcurrent::run(this, &QPing::sync, url);
+    watcher.setFuture(result);
 }

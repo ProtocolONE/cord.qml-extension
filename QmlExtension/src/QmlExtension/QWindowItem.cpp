@@ -59,6 +59,14 @@ QWindowItem::~QWindowItem()
     delete _window;
 }
 
+void QWindowItem::activate()
+{
+    this->window()->showMinimized();  
+    this->window()->setWindowState(Qt::WindowActive);  
+    this->window()->showNormal();  
+    this->window()->setFocus();
+}
+
 bool QWindowItem::eventFilter(QObject *, QEvent *ev)
 {
     switch(ev->type()) {

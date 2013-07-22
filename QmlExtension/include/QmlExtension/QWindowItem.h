@@ -116,8 +116,10 @@ public:
     void setDeleteOnClose(bool close);
     void setTopMost(bool value);
     void setFlags(int flags);
+
 public Q_SLOTS:
     void close();
+    void activate();
 
 protected:
     bool eventFilter(QObject *, QEvent *ev);

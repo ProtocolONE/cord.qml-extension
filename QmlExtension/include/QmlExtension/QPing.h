@@ -14,6 +14,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtDeclarative/QtDeclarative>
+#include <QFutureWatcher>
 
 /*!
 \class Phonon
@@ -29,11 +30,15 @@ public:
     QPing(QObject* parent = 0);
     ~QPing();
 
-    Q_INVOKABLE int pingHost(QString url);
+    Q_INVOKABLE void start(QString url);
 
-    static QPing *qmlAttachedProperties(QObject *obj);
+private:
+    QFutureWatcher<void> watcher;
+    void sync(QString url);
+
+signals:
+    void success(quint32 value);
+    void failed();
 };
-
-QML_DECLARE_TYPEINFO(QPing, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // _GGS_QMLEXTENSION_QPING_H_
