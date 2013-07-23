@@ -10,18 +10,18 @@
 
 
 #include <QmlExtension/QPing.h>
+
+#ifdef WIN32
 #include <winsock2.h>
 #include <iphlpapi.h>
 #include <icmpapi.h>
 #include <winternl.h>
 
-#ifdef WIN32
 #pragma comment(lib, "iphlpapi.lib")
 #pragma comment(lib, "ws2_32.lib")
 #endif
 
 QPing::QPing(QObject* parent) {
-    this->watcher.cancel();
 }
 
 QPing::~QPing() {
@@ -30,11 +30,6 @@ QPing::~QPing() {
 void QPing::sync(QString url) 
 {   
 #ifdef WIN32
-    HANDLE hIcmpFile;
-    DWORD dwRetVal = 0;
-    char SendData[32] = "Data Buffer";
-    LPVOID ReplyBuffer = NULL;
-    DWORD ReplySize = 0;
     struct in_addr addr;
     std::string string_host = url.toAscii();
     const char* host = string_host.c_str();
@@ -64,36 +59,35 @@ void QPing::sync(QString url)
         } 
     }
 
-    hIcmpFile = IcmpCreateFile();
-    if (hIcmpFile == INVALID_HANDLE_VALUE) {
+    HANDLE icmpFile = IcmpCreateFile();
+    if (icmpFile == INVALID_HANDLE_VALUE) {
         emit this->failed();
         return;
     }    
 
-    ReplySize = sizeof(ICMP_ECHO_REPLY) + sizeof(SendData);
-    ReplyBuffer = (VOID*) malloc(ReplySize);
-    if (ReplyBuffer == NULL) {
-        emit this->failed();
-        return;
-    }  
+    char sendData[32] = "Data Buffer";
+    char replyBuffer[sizeof(ICMP_ECHO_REPLY) + sizeof(sendData)];
 
-    dwRetVal = IcmpSendEcho(hIcmpFile, addr.s_addr, SendData, sizeof(SendData), 
-        NULL, ReplyBuffer, ReplySize, 1000);
+    DWORD dwRetVal = IcmpSendEcho(icmpFile, addr.s_addr, sendData, sizeof(sendData), 
+        NULL, replyBuffer, sizeof(replyBuffer), 1000);
 
     if (dwRetVal) {
-        PICMP_ECHO_REPLY pEchoReply = (PICMP_ECHO_REPLY)ReplyBuffer;
-        struct in_addr ReplyAddr;
+        PICMP_ECHO_REPLY pEchoReply = (PICMP_ECHO_REPLY)replyBuffer;
         emit this->success(pEchoReply->RoundTripTime);
+        IcmpCloseHandle(icmpFile);
         return;
     }
-    
+
+    IcmpCloseHandle(icmpFile);
     emit this->failed();
 #else
+    emit this->failed();
+    qDebug() << "This function, not Implemented";
     return;       
 #endif
 }
 
-void QPing::start(QString url) 
+void QPing::start(const QString& url) 
 {   
     if (watcher.isRunning()) {
         qDebug() << "Warning, ping allready in progress";
