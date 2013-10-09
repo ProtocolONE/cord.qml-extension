@@ -54,7 +54,7 @@ namespace GGS {
       NetworkAccessManagerInteractor::_cookieJar->setCookiesFromUrl(cookies, url);
     }
 
-    QString & NetworkAccessManagerInteractor::cookiesForUrl(const QString &url)
+    QString NetworkAccessManagerInteractor::cookiesForUrl(const QString &url)
     {
       if (!NetworkAccessManagerInteractor::_cookieJar) 
         return QString();

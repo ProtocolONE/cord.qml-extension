@@ -59,6 +59,7 @@ class QDesktopItem : public QObject
     Q_PROPERTY(int availableWidth READ availableWidth NOTIFY availableGeometryChanged)
     Q_PROPERTY(int availableHeight READ availableHeight NOTIFY availableGeometryChanged)
     Q_PROPERTY(int screenCount READ screenCount NOTIFY screenCountChanged)
+    Q_PROPERTY(int primaryScreen READ primaryScreen NOTIFY screenCountChanged)
 
     Q_PROPERTY(QRect primaryScreenAvailableGeometry READ primaryScreenAvailableGeometry NOTIFY primaryScreenAvailableGeometryChanged)
 
@@ -67,11 +68,13 @@ public:
 
     int screenCount() const;
     Q_INVOKABLE QRect screenGeometry(int screen) const;
+    Q_INVOKABLE int screenNumber(int xpos, int ypos) const;
     Q_INVOKABLE QRect availableGeometry(int screen) const;
     int screenWidth() const;
     int screenHeight() const;
     int availableWidth() const;
     int availableHeight() const;
+    int primaryScreen() const;
     QRect primaryScreenAvailableGeometry() const;
 
     static QDesktopItem *qmlAttachedProperties(QObject *obj);

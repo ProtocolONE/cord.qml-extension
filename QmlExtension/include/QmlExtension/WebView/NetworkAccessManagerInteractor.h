@@ -34,7 +34,7 @@ namespace GGS {
       void clearAllCookies();
 
       void setCookiesFromUrl(const QString &cookies, const QString &url);
-      QString &cookiesForUrl(const QString &url);
+      QString cookiesForUrl(const QString &url);
 
     private:
       static QDeclarativeEngine* _declarativeEngine;
