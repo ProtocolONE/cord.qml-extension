@@ -144,5 +144,65 @@ namespace GGS {
       return this->calcHash(userId + "guest", appKey + "guest", cookie + "guest");
     }
 
+    Q_INVOKABLE void RegistryCredentialStorage::saveEx(
+      const QString& prefix, 
+      const QString& userId, 
+      const QString& appKey, 
+      const QString& cookie)
+    {
+      QSettings settings(this->_path, QSettings::NativeFormat);
+      settings.setValue(prefix + "userId", userId);
+      settings.setValue(prefix + "appKey", appKey);
+      settings.setValue(prefix + "cookie", cookie);
+      settings.setValue(prefix + "crc", this->calcHashEx(prefix, userId, appKey, cookie));
+    }
+
+    Q_INVOKABLE QVariantMap RegistryCredentialStorage::loadEx(const QString& prefix)
+    {
+      QSettings settings(this->_path, QSettings::NativeFormat);
+      if ( !settings.contains(prefix + "userId")
+        || !settings.contains(prefix + "appKey")
+        || !settings.contains(prefix + "cookie")
+        || !settings.contains(prefix + "crc"))
+      {
+        this->resetEx(prefix);
+        return QVariantMap();
+      }
+
+      QString userId = settings.value(prefix + "userId", "").toString();
+      QString appKey = settings.value(prefix + "appKey", "").toString();
+      QString cookie = settings.value(prefix + "cookie", "").toString();
+      QString crc = settings.value(prefix + "crc", "").toString();
+
+      if (this->calcHashEx(prefix, userId, appKey, cookie) != crc) {
+        this->resetEx(prefix);
+        return QVariantMap();
+      }
+
+      QVariantMap result;
+      result["userId"] = userId;
+      result["appKey"] = appKey;
+      result["cookie"] = cookie;
+      return result;
+    }
+
+    Q_INVOKABLE void RegistryCredentialStorage::resetEx(const QString& prefix)
+    {
+      QSettings settings(this->_path, QSettings::NativeFormat);
+      settings.remove(prefix + "userId");
+      settings.remove(prefix + "appKey");
+      settings.remove(prefix + "cookie");
+      settings.remove(prefix + "crc");
+    }
+
+    QString RegistryCredentialStorage::calcHashEx(
+      const QString& prefix, 
+      const QString& userId, 
+      const QString& appKey, 
+      const QString& cookie)
+    {
+      return this->calcHash(userId + prefix, appKey + prefix, cookie + prefix);
+    }
+
   }
 }
