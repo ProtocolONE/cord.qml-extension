@@ -53,7 +53,8 @@ public:
         SplitVCursor,
         WaitCursor,
         PointingHandCursor,
-        SizeFDiagCursor
+        SizeFDiagCursor,
+        IBeamCursor
     };
 
     explicit QCursorArea(QDeclarativeItem *parent = 0);
