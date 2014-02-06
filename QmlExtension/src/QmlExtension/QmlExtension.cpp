@@ -26,6 +26,7 @@
 
 #include <QmlExtension/Auth/RegistryCredentialStorage.h>
 #include <QmlExtension/App.h>
+#include <QmlExtension/Jabber.h>
 
 #include <QtCore/QCoreApplication>
 
@@ -39,6 +40,8 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterType<QWindowItem>("Tulip", 1, 0, "Window");
   qmlRegisterType<QPing>("Tulip", 1, 0, "PingEx");
   qmlRegisterType<GGS::MarketingAdapter>("Tulip", 1, 0, "Marketing");
+
+  qmlRegisterType<GGS::Jabber>("Tulip", 1, 0, "Jabber");
 
   qmlRegisterUncreatableType<QDesktopItem>("Tulip", 1, 0, "Desktop", QLatin1String("Do not create objects of type Desktop"));
   qmlRegisterUncreatableType<SettingsAdapter>("Tulip", 1, 0, "Settings", QLatin1String("Do not create objects of type Settings"));
