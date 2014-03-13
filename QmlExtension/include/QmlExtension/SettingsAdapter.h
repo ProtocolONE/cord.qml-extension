@@ -7,15 +7,12 @@
 ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
-
-#ifndef _GGS_QMLEXTENSION_SETTINGSADPATER_H_
-#define _GGS_QMLEXTENSION_SETTINGSADPATER_H_
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QVariant>
 #include <QtDeclarative/QtDeclarative>
-
 
 /*!
   \class SettingsAdapter
@@ -28,7 +25,7 @@ class SettingsAdapter : public QObject
 {
   Q_OBJECT
 public:
-  SettingsAdapter(QObject* parent = 0);
+  explicit SettingsAdapter(QObject* parent = 0);
   ~SettingsAdapter();
 
   Q_INVOKABLE void setValue(const QString& group, const QString& key, const QVariant& value) const;
@@ -38,5 +35,3 @@ public:
 };
 
 QML_DECLARE_TYPEINFO(SettingsAdapter, QML_HAS_ATTACHED_PROPERTIES)
-
-#endif // _GGS_QMLEXTENSION_SETTINGSADPATER_H_

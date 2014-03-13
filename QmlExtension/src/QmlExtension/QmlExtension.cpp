@@ -21,6 +21,7 @@
 #include <QmlExtension/QPing.h>
 #include <QmlExtension/traywindow.h>
 #include <QmlExtension/TaskList.h>
+#include <QmlExtension/MouseCursor.h>
 #include <QmlExtension/WebView/CustomNetworkManagerFactory.h>
 #include <QmlExtension/WebView/NetworkAccessManagerInteractor.h>
 
@@ -40,7 +41,6 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterType<QWindowItem>("Tulip", 1, 0, "Window");
   qmlRegisterType<QPing>("Tulip", 1, 0, "PingEx");
   qmlRegisterType<GGS::MarketingAdapter>("Tulip", 1, 0, "Marketing");
-
   qmlRegisterType<GGS::Jabber>("Tulip", 1, 0, "Jabber");
 
   qmlRegisterUncreatableType<QDesktopItem>("Tulip", 1, 0, "Desktop", QLatin1String("Do not create objects of type Desktop"));
@@ -52,6 +52,7 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<QMultimedia>("Tulip", 1, 0, "QMultimedia", QLatin1String("Do not create objects of type QMultimedia"));
   qmlRegisterUncreatableType<TrayWindow>("Tulip", 1, 0, "TrayWindow", QLatin1String("Do not create objects of type TrayWindow"));
   qmlRegisterUncreatableType<TaskList>("Tulip", 1, 0, "TaskList", QLatin1String("Do not create objects of type TaskList"));
+  qmlRegisterUncreatableType<GGS::MouseCursor>("Tulip", 1, 0, "MouseCursor", QLatin1String("Do not create objects of type MouseCursor"));
   
   // UNDONE: решить какой вариант регистрации подойдет  
   //qmlRegisterUncreatableType<GGS::MarketingAdapter>("Tulip", 1, 0, "Marketing", QLatin1String("Do not create objects of type Marketing"));

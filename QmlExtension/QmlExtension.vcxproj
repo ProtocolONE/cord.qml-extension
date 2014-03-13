@@ -89,6 +89,7 @@ IF "$(Configuration)"=="Debug" (
 
 xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\bin\SettingsX86%D%.dll" "$(TargetDir)"
 xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(TargetDir)"
+xcopy /Y /I /R /E "$(QGNACOMMONDIR)\Qxmpp\$(QxmppArea)\bin\qxmppx86%D%0.dll" "$(TargetDir)"
 </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -132,6 +133,7 @@ IF "$(Configuration)"=="Debug" (
 
 xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\bin\SettingsX86%D%.dll" "$(TargetDir)"
 xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(TargetDir)"
+xcopy /Y /I /R /E "$(QGNACOMMONDIR)\Qxmpp\$(QxmppArea)\bin\qxmppx86%D%0.dll" "$(TargetDir)"
 
 </Command>
     </PreBuildEvent>
@@ -147,6 +149,9 @@ xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_MarketingAdapter.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MouseCursor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_NetworkAccessManagerInteractor.cpp">
@@ -182,6 +187,9 @@ xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(
     <ClCompile Include="GeneratedFiles\Release\moc_MarketingAdapter.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MouseCursor.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_NetworkAccessManagerInteractor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -203,6 +211,7 @@ xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(
     <ClCompile Include="GeneratedFiles\Release\moc_traywindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\QmlExtension\MouseCursor.cpp" />
     <ClCompile Include="src\QmlExtension\Jabber.cpp" />
     <ClCompile Include="src\QmlExtension\QPing.cpp" />
     <ClCompile Include="src\QmlExtension\TaskList.cpp" />
@@ -418,6 +427,16 @@ xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing Jabber.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_DECLARATIVE_LIB -DQMLEXTENSION_LIB -DQT_NETWORK_LIB -D_WINDLL -D_UNICODE  "-I.\GeneratedFiles" "-I." "-I$(ProjectDir)\include" "-I$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\include" "-I$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\include" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtNetwork" "-I$(QGNACOMMONDIR)\Qxmpp\$(QxmppArea)\include\qxmpp"</Command>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\MouseCursor.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing MouseCursor.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_DECLARATIVE_LIB -DQMLEXTENSION_LIB -DQT_NETWORK_LIB -D_WINDLL -D_UNICODE "-I.\GeneratedFiles" "-I." "-I$(ProjectDir)\include" "-I$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\include" "-I$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\include" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtNetwork" "-I$(QGNACOMMONDIR)\Qxmpp\$(QxmppArea)\include\qxmpp"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing MouseCursor.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_DECLARATIVE_LIB -DQMLEXTENSION_LIB -DQT_NETWORK_LIB -D_WINDLL -D_UNICODE "-I.\GeneratedFiles" "-I." "-I$(ProjectDir)\include" "-I$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\include" "-I$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\include" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtNetwork" "-I$(QGNACOMMONDIR)\Qxmpp\$(QxmppArea)\include\qxmpp"</Command>
     </CustomBuild>
     <ClInclude Include="resource.h" />
     <CustomBuild Include="include\QmlExtension\SettingsAdapter.h">
