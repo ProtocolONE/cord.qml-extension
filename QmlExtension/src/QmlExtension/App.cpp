@@ -11,7 +11,7 @@
 
 #include <QmlExtension/App.h>
 #include <Core/System/HardwareId.h>
-
+#include <QtConcurrent/QtConcurrentRun>
 #include <QtCore/QCoreApplication>
 
 App::App(QObject *parent)
@@ -32,7 +32,14 @@ QStringList App::arguments() {
   return QCoreApplication::arguments();
 }
 
-QString App::hwid()
+QString App::hwid(bool async)
 {
-  return GGS::Core::System::HardwareId::value();
+    if (!async)
+        return GGS::Core::System::HardwareId::value();
+
+    QtConcurrent::run([](App* obj){
+        emit obj->hwidChanged(GGS::Core::System::HardwareId::value());
+    }, this);
+
+    return QString();
 }

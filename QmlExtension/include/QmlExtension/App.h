@@ -23,8 +23,12 @@ public:
   ~App();
 
   Q_INVOKABLE QStringList arguments();
-  Q_INVOKABLE QString hwid();
+  Q_INVOKABLE QString hwid(bool async = false);
 
+signals:
+  void hwidChanged(QString hwid);
+
+public:
   static App *qmlAttachedProperties(QObject *obj);
 };
 
