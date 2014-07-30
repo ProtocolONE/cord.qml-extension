@@ -28,6 +28,8 @@
 #include <QmlExtension/Auth/RegistryCredentialStorage.h>
 #include <QmlExtension/Host.h>
 #include <QmlExtension/Jabber.h>
+#include <QmlExtension/StyleReader.h>
+#include <QmlExtension/Shortcut.h>
 
 #include <QtCore/QCoreApplication>
 
@@ -42,6 +44,7 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterType<QPing>("Tulip", 1, 0, "PingEx");
   qmlRegisterType<GGS::MarketingAdapter>("Tulip", 1, 0, "Marketing");
   qmlRegisterType<GGS::Jabber>("Tulip", 1, 0, "Jabber");
+  qmlRegisterType<Shortcut>("Tulip", 0, 1, "Shortcut");
 
   qmlRegisterUncreatableType<QDesktopItem>("Tulip", 1, 0, "Desktop", QLatin1String("Do not create objects of type Desktop"));
   qmlRegisterUncreatableType<SettingsAdapter>("Tulip", 1, 0, "Settings", QLatin1String("Do not create objects of type Settings"));
@@ -54,6 +57,7 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<TaskList>("Tulip", 1, 0, "TaskList", QLatin1String("Do not create objects of type TaskList"));
   qmlRegisterUncreatableType<GGS::MouseCursor>("Tulip", 1, 0, "MouseCursor", QLatin1String("Do not create objects of type MouseCursor"));
   qmlRegisterUncreatableType<QFileDialogAdapter>("Tulip", 1, 0, "QFileDialog", QLatin1String("Do not create objects of type QFileDialog"));
+  qmlRegisterUncreatableType<StyleReader>("Tulip", 1, 0, "StyleReader", QLatin1String("Do not create objects of type StyleReader"));
 }
 
 void QmlExtension::initializeEngine(QDeclarativeEngine *engine, const char *uri)
