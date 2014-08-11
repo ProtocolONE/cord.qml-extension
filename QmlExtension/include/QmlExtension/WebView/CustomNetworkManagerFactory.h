@@ -29,8 +29,6 @@ namespace GGS {
       virtual QNetworkAccessManager *create(QObject *parent);
 
       PersistentCookieJar* cookieJar() const;
-    public slots:
-      void onIgnoreSSLErrors(QNetworkReply* reply, QList<QSslError> error);
 
     private:
       QNetworkAccessManager* _networkManager;

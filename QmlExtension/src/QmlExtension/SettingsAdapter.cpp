@@ -53,3 +53,17 @@ QVariant SettingsAdapter::value(const QString& group, const QString& key, const 
   settings.beginGroup(group);
   return settings.value(key, defaultValue);
 }
+
+void SettingsAdapter::remove(const QString& group, const QString& key) const
+{
+    if (Settings::isInitialized()) {
+        Settings settings;
+        settings.beginGroup(group);
+        settings.remove(key);
+        return;
+    } 
+
+    QSettings settings("GGS", "Qml viewer");
+    settings.beginGroup(group);
+    settings.remove(key);
+}

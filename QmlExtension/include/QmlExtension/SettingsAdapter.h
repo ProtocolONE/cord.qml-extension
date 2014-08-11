@@ -31,6 +31,7 @@ public:
 
   Q_INVOKABLE void setValue(const QString& group, const QString& key, const QVariant& value) const;
   Q_INVOKABLE QVariant value(const QString& group, const QString& key, const QVariant& defaultValue = QVariant()) const;
+  Q_INVOKABLE void remove(const QString& group, const QString& key) const;
 
   static SettingsAdapter *qmlAttachedProperties(QObject *obj);
 };
