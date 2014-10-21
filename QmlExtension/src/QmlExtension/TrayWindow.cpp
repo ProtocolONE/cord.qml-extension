@@ -13,15 +13,15 @@
 #define SIGNAL_CONNECT_CHECK(X) { bool result = X; Q_ASSERT_X(result, __FUNCTION__ , #X); }
 
 TrayWindow::TrayWindow(QObject* parent) 
-	: QObject(parent),
-	_systray(0)
+  : QObject(parent),
+  _systray(0)
 {
 }
 
 void TrayWindow::install(const QString& icon) {
   if (this->_systray) {
-	  this->_systray->hide();
-	  delete this->_systray;
+    this->_systray->hide();
+    delete this->_systray;
   }
 
   QIcon trayIcon = QIcon(icon);  
@@ -35,26 +35,34 @@ void TrayWindow::install(const QString& icon) {
     this, SLOT(mouseClicked(QSystemTrayIcon::ActivationReason))));
 }
 
+void TrayWindow::setToolTip(const QString& toolTip)
+{
+  if (this->_systray) 
+    this->_systray->setToolTip(toolTip);
+}
+
 TrayWindow::~TrayWindow()
 {
-  this->_systray->setVisible(false);
+  if (this->_systray) 
+    this->_systray->setVisible(false);
+
   this->hide();
 }
 
 void TrayWindow::hide() {
   if (this->_systray)
-	this->_systray->hide();
+    this->_systray->hide();
 }
 
 void TrayWindow::mouseClicked(QSystemTrayIcon::ActivationReason reason)   
 {
   switch(reason) {
   case QSystemTrayIcon::Trigger:
-		emit this->activate();
+    emit this->activate();
     break;
 
   case QSystemTrayIcon::Context: 
-	  this->activateWindow(QCursor::pos().x(), QCursor::pos().y());
+    this->activateWindow(QCursor::pos().x(), QCursor::pos().y());
     break;
   }
 }
@@ -63,3 +71,4 @@ TrayWindow* TrayWindow::qmlAttachedProperties(QObject *obj)
 {
   return new TrayWindow(obj);
 }
+

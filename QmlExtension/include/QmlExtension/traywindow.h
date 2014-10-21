@@ -8,34 +8,39 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
 
-#pragma once
+#ifndef TRAYWINDOW_H
+#define TRAYWINDOW_H
 
-#include <QtWidgets\QSystemTrayIcon.h>
+#include <QSystemTrayIcon.h>
 #include <QtDeclarative\QDeclarativeView>
 #include <QtDeclarative\QDeclarativeItem>
 
 class TrayWindow : public QObject
 {
-	Q_OBJECT
+  Q_OBJECT
 public:
-	TrayWindow(QObject* parent = 0);
-	virtual ~TrayWindow();
+  TrayWindow(QObject* parent = 0);
+  virtual ~TrayWindow();
 
-	static TrayWindow *qmlAttachedProperties(QObject *obj);
+  static TrayWindow *qmlAttachedProperties(QObject *obj);
 
 public slots:
-	void install(const QString& icon);
-	void hide();
+  void install(const QString& icon);
+  void setToolTip(const QString& toolTip);
+  void hide();
 
 signals:
-	void activate();
-	void activateWindow(int mouseX, int mouseY);
+  void activate();
+  void activateWindow(int mouseX, int mouseY);
 
 private slots:
-	void mouseClicked(QSystemTrayIcon::ActivationReason reason); 
+  void mouseClicked(QSystemTrayIcon::ActivationReason reason); 
 
 private:
-	QSystemTrayIcon* _systray;
+  QSystemTrayIcon* _systray;
 };
 
 QML_DECLARE_TYPEINFO(TrayWindow, QML_HAS_ATTACHED_PROPERTIES)
+
+
+#endif // TRAYWINDOW_H
