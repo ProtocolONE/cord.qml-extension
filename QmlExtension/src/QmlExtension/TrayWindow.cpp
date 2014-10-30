@@ -10,12 +10,24 @@
 
 #include <QmlExtension/traywindow.h>
 
+#include <QtGui/QMovie>
+
 #define SIGNAL_CONNECT_CHECK(X) { bool result = X; Q_ASSERT_X(result, __FUNCTION__ , #X); }
 
 TrayWindow::TrayWindow(QObject* parent) 
-  : QObject(parent),
-  _systray(0)
+  : QObject(parent)
+  , _systray(0)
+  , _animatedIcon(0)
 {
+}
+
+TrayWindow::~TrayWindow()
+{
+  clearAnimatedIcon();
+  if (this->_systray) 
+    this->_systray->setVisible(false);
+
+  this->hide();
 }
 
 void TrayWindow::install(const QString& icon) {
@@ -41,12 +53,41 @@ void TrayWindow::setToolTip(const QString& toolTip)
     this->_systray->setToolTip(toolTip);
 }
 
-TrayWindow::~TrayWindow()
-{
-  if (this->_systray) 
-    this->_systray->setVisible(false);
+void TrayWindow::setIcon(const QString &iconSource) {
+  if (!this->_systray) {
+    this->install(iconSource);
+  }
 
-  this->hide();
+  this->clearAnimatedIcon();
+
+  QIcon trayIcon = QIcon(iconSource);  
+  this->_systray->setIcon(trayIcon);
+}
+
+void TrayWindow::setAnimatedSource(const QString &source)
+{
+  if (source.isEmpty()) {
+    this->clearAnimatedIcon();
+    return;
+  }
+
+  this->_animatedIcon = new QMovie(source);
+  connect(this->_animatedIcon, SIGNAL(frameChanged(int)), this, SLOT(updateIcon()));
+
+  this->_animatedIcon->start();
+}
+
+QString TrayWindow::animatedSource() const
+{
+  if (this->_animatedIcon->isValid())
+    this->_animatedIcon->fileName();
+  
+  return QString();
+}
+
+void TrayWindow::updateIcon()
+{
+  this->_systray->setIcon(this->_animatedIcon->currentPixmap());
 }
 
 void TrayWindow::hide() {
@@ -72,3 +113,11 @@ TrayWindow* TrayWindow::qmlAttachedProperties(QObject *obj)
   return new TrayWindow(obj);
 }
 
+void TrayWindow::clearAnimatedIcon()
+{
+  if (!this->_animatedIcon)
+    return;
+
+  delete this->_animatedIcon;
+  this->_animatedIcon = 0;
+}
