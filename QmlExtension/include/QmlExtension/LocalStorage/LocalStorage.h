@@ -1,13 +1,6 @@
 #pragma once
 
-#include <QObject>
-#include <QDeclarativeEngine>
-
-#include <QtCore/QCoreApplication>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
-#include <QtSql/QSqlError>
-
+#include <QtCore/QObject>
 #include <QtDeclarative/QtDeclarative>
 #include <QmlExtension/LocalStorage/QmlSqlDatabaseData.h>
 
@@ -18,7 +11,13 @@ public:
   explicit LocalStorage(QObject *parent = 0);
   virtual ~LocalStorage();
 
-  Q_INVOKABLE QmlSqlDatabaseData *openDatabaseSync(QString dbname, QString version, QString description, int estimated_size);
+  Q_INVOKABLE QmlSqlDatabaseData *openDatabaseSync(
+    QString folder,
+    QString dbname,
+    QString version,
+    QString description,
+    int estimated_size);
+
   static LocalStorage *qmlAttachedProperties(QObject *obj);
 };
 

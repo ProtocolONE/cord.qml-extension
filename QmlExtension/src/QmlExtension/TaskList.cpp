@@ -36,9 +36,8 @@ int TaskList::addItem(int categoryId, QString icon, QString name, QString descri
     item.setIcon(icon);
     item.setName(name);
     item.setDescription(description);
-    QString hostPath = QString("%1\\%2").arg(QCoreApplication::applicationDirPath(), "qGNA.exe");
-    item.setUrl(hostPath);
-    item.setParams(params);
+    item.setUrl("gamenet://" + params);
+    item.setParams("");
 
     return this->_manager.addItem(categoryId, item);
 }
@@ -49,9 +48,8 @@ int TaskList::addTask(QString icon,  QString name, QString description, QString 
     item.setIcon(icon);
     item.setName(name);
     item.setDescription(description);
-    QString hostPath = QString("%1\\%2").arg(QCoreApplication::applicationDirPath(), "qGNA.exe");
-    item.setUrl(hostPath);
-    item.setParams(params);
+    item.setUrl("gamenet://" + params);
+    item.setParams("");
 
     return this->_manager.addTask(item);
 }

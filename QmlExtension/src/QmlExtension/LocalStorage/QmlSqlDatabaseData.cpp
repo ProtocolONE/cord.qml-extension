@@ -1,31 +1,56 @@
 #include <QmlExtension/LocalStorage/QmlSqlDatabaseData.h>
 
-#include <QtCore/QDebug>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlRecord>
 #include <QtSql/QSqlError>
 
 QmlSqlDatabaseData::QmlSqlDatabaseData(QObject *parent, QString dbName)
-  : QObject(parent),
-  _dbName(dbName)
+  : QObject(parent)
+  , _dbName(dbName)
+  , _openedTrasaction(false)
 {
 }
 
 QmlSqlDatabaseData::~QmlSqlDatabaseData()
 {
-  qDebug() << "Hello from QmlSqlDatabaseData destr";
+  if (this->_openedTrasaction)
+    this->rollback();
 }
 
-Q_INVOKABLE QVariantMap QmlSqlDatabaseData::executeSql(QString sql)
+QVariantMap QmlSqlDatabaseData::executeSql(QString sql)
 {
   return this->executeSql(sql, QVariant());
 }
 
+bool QmlSqlDatabaseData::transaction()
+{
+  QSqlDatabase db = QSqlDatabase::database(this->_dbName);
+  if (db.transaction()) {
+    this->_openedTrasaction = true;
+    return true;
+  }
+
+  return false;
+}
+
+bool QmlSqlDatabaseData::commit()
+{
+  this->_openedTrasaction = false;
+  QSqlDatabase db = QSqlDatabase::database(this->_dbName);
+  return db.commit();
+}
+
+bool QmlSqlDatabaseData::rollback()
+{
+  this->_openedTrasaction = false;
+  QSqlDatabase db = QSqlDatabase::database(this->_dbName);
+  return db.rollback();
+}
+
 void QmlSqlDatabaseData::bindQueryValues(QSqlQuery &query, QVariant &args)
 {
-  if (args.isNull() || !args.isValid()) {
+  if (args.isNull() || !args.isValid())
     return;
-  }
 
   if (args.canConvert(QVariant::List)) {
     QVariantList list = args.toList();
@@ -43,21 +68,19 @@ void QmlSqlDatabaseData::bindQueryValues(QSqlQuery &query, QVariant &args)
   }
 }
 
-Q_INVOKABLE QVariantMap QmlSqlDatabaseData::executeSql(QString sql, QVariant args)
+QVariantMap QmlSqlDatabaseData::executeSql(QString sql, QVariant args)
 {
   QSqlDatabase db = QSqlDatabase::database(this->_dbName);
 
   QSqlQuery query(db);
 
-  if (!query.prepare(sql)) {
+  if (!query.prepare(sql))
     return this->buildErrorResponse(query.lastError());
-  }
 
   this->bindQueryValues(query, args);
 
-  if (!query.exec()) {
+  if (!query.exec())
     return this->buildErrorResponse(query.lastError());
-  }
 
   QVariantList dataSet;
   while (query.next()) {

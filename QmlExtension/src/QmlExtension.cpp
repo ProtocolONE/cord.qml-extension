@@ -27,13 +27,8 @@
 
 #include <QmlExtension/Auth/RegistryCredentialStorage.h>
 #include <QmlExtension/Host.h>
-#include <QmlExtension/Jabber.h>
 #include <QmlExtension/StyleReader.h>
 #include <QmlExtension/Shortcut.h>
-
-
-#include <QmlExtension/LocalStorage/LocalStorage.h>
-#include <QmlExtension/LocalStorage/QmlSqlDatabaseData.h>
 
 #include <QtCore/QCoreApplication>
 
@@ -47,7 +42,6 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterType<QWindowItem>("Tulip", 1, 0, "Window");
   qmlRegisterType<QPing>("Tulip", 1, 0, "PingEx");
   qmlRegisterType<GGS::MarketingAdapter>("Tulip", 1, 0, "Marketing");
-  qmlRegisterType<GGS::Jabber>("Tulip", 1, 0, "Jabber");
   qmlRegisterType<Shortcut>("Tulip", 0, 1, "Shortcut");
 
   qmlRegisterUncreatableType<QDesktopItem>("Tulip", 1, 0, "Desktop", QLatin1String("Do not create objects of type Desktop"));
@@ -62,15 +56,10 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<GGS::MouseCursor>("Tulip", 1, 0, "MouseCursor", QLatin1String("Do not create objects of type MouseCursor"));
   qmlRegisterUncreatableType<QFileDialogAdapter>("Tulip", 1, 0, "QFileDialog", QLatin1String("Do not create objects of type QFileDialog"));
   qmlRegisterUncreatableType<StyleReader>("Tulip", 1, 0, "StyleReader", QLatin1String("Do not create objects of type StyleReader"));
-
-  qmlRegisterUncreatableType<LocalStorage>("Tulip", 1, 0, "LocalStorage", QLatin1String("Do not create objects of type LocalStorage"));
-  qmlRegisterUncreatableType<QmlSqlDatabaseData>("Tulip", 1, 0, "QmlSqlDatabaseData", QLatin1String("Do not create objects of type QmlSqlDatabaseData"));
 }
 
 void QmlExtension::initializeEngine(QDeclarativeEngine *engine, const char *uri)
 {
-  //engine->addPluginPath("D:/SDK/Qt/Qt5.2.1/5.2.1/msvc2010/plugins");
-
   CustomNetworkManagerFactory *customFactory = new CustomNetworkManagerFactory(engine);
   engine->setNetworkAccessManagerFactory(customFactory);
   
