@@ -95,12 +95,13 @@ QVariantMap QmlSqlDatabaseData::executeSql(QString sql, QVariant args)
     dataSet.push_front(row);
   }
 
-  query.clear();
-
   QVariantMap returnValue;
   returnValue.insert("rowsAffected", QVariant(query.numRowsAffected()));
   returnValue.insert("insertId", query.lastInsertId());
   returnValue.insert("rows", dataSet);
+
+  query.clear();
+
   return returnValue;
 }
 
