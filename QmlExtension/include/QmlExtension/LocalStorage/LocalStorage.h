@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QtCore/QObject>
-#include <QtDeclarative/QtDeclarative>
+#include <QtQuick/QQuickItem>
 #include <QmlExtension/LocalStorage/QmlSqlDatabaseData.h>
 
 class LocalStorage : public QObject

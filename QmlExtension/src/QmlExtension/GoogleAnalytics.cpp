@@ -1,5 +1,7 @@
 #include <QmlExtension/GoogleAnalytics.h>
 #include <QtCore/QLocale>
+#include <QSysInfo>
+
 #include <windows.h>
 
 GoogleAnalytics::GoogleAnalytics(QObject* obj)  : QObject(obj)
@@ -37,4 +39,9 @@ Q_INVOKABLE QString GoogleAnalytics::systemVersion()
   result += ")";
 
   return result;
+}
+
+QString GoogleAnalytics::winVersion()
+{
+  return QString::number(QSysInfo::windowsVersion());
 }

@@ -10,9 +10,10 @@
 #pragma once
 
 #include <QtCore/QString>
-#include <QtCore/QVariantList>
 #include <QtCore/QObject>
-#include <QtDeclarative/QtDeclarative>
+
+#include <QtCore/QVariantList>
+#include <QtQuick/QQuickItem>
 
 class StyleReader : public QObject
 {

@@ -40,6 +40,7 @@
 #include <QmlExtension/QDesktopItem.h>
 
 #include <QtWidgets/QApplication>
+#include <QtCore/QPoint>
 
 QDesktopItem::QDesktopItem(QObject* obj) : QObject(obj) {
     connect(QApplication::desktop(), SIGNAL(resized(int)), this, SIGNAL(screenGeometryChanged()));
@@ -99,3 +100,14 @@ QRect QDesktopItem::primaryScreenAvailableGeometry() const
 {
   return this->availableGeometry(QApplication::desktop()->primaryScreen());
 }
+
+int QDesktopItem::primaryScreen() const
+{
+  return QApplication::desktop()->primaryScreen();
+}
+
+Q_INVOKABLE int QDesktopItem::screenNumber(int xpos, int ypos) const
+{
+  return QApplication::desktop()->screenNumber(QPoint(xpos, ypos));
+}
+

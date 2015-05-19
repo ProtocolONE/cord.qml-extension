@@ -11,14 +11,14 @@
 #pragma once
 
 #include <QmlExtension/qmlextension_global.h>
-#include <QtDeclarative/QDeclarativeExtensionPlugin>
+#include <QtQml/QQmlExtensionPlugin>
 
-class QmlExtension : public QDeclarativeExtensionPlugin
+class QmlExtension : public QQmlExtensionPlugin
 {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID "Tulip" FILE "tulip.json")
+  Q_PLUGIN_METADATA(IID "vab.gamenet.Tulip" FILE "tulip.json")
 
 public:
   void registerTypes(const char *uri);
-  void initializeEngine(QDeclarativeEngine *engine, const char *uri);
+  void initializeEngine(QQmlEngine *engine, const char *uri);
 };

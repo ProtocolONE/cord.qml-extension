@@ -13,7 +13,7 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QStringList>
-#include <QtDeclarative/QDeclarativeItem>
+#include <QtQuick/QQuickItem>
 
 class Host : public QObject
 {

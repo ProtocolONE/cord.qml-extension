@@ -13,7 +13,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QPoint>
 #include <QtCore/QRect>
-#include <QtDeclarative/QtDeclarative>
+#include <QtQuick/QQuickItem>
 
 #include <Windows.h>
 

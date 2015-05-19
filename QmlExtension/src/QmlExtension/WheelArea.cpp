@@ -1,6 +1,6 @@
 #include <QmlExtension/WheelArea.h>
 
-WheelArea::WheelArea(QDeclarativeItem *parent /*= 0*/) : QDeclarativeItem(parent)
+WheelArea::WheelArea(QQuickItem *parent /*= 0*/) : QQuickItem(parent)
 {
 
 }

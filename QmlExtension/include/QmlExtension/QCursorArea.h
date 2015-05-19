@@ -24,13 +24,15 @@
 **
 ****************************************************************************/
 
-#pragma once
+#ifndef CURSORAREA_H
+#define CURSORAREA_H
 
 #include <QDeclarativeItem>
 
+
 /*!
   \class QCursorArea
-  \brief Реализует воозможность менять курсор мышки.
+  \brief Р РµР°Р»РёР·СѓРµС‚ РІРѕРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РјРµРЅСЏС‚СЊ РєСѓСЂСЃРѕСЂ РјС‹С€РєРё.
   \author Ilya.Tkachenko
   \date 10.08.2012
 */
@@ -51,7 +53,8 @@ public:
         SplitVCursor,
         WaitCursor,
         PointingHandCursor,
-        SizeFDiagCursor
+        SizeFDiagCursor,
+        IBeamCursor
     };
 
     explicit QCursorArea(QDeclarativeItem *parent = 0);
@@ -65,3 +68,5 @@ signals:
 private:
     Cursor m_cursor;
 };
+
+#endif // CURSORAREA_H

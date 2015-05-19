@@ -14,7 +14,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 
-#include <QtDeclarative/QtDeclarative>
+#include <QtQuick/QQuickItem>
 
 // UNDONE Ужасная строчка без, которой не компилиться moc_TaskList. 
 // Очень бы хотелось найти того кто ее написал когда писала этот код и убить.

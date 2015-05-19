@@ -2,6 +2,8 @@
 
 #include <QtSql/QSqlDriver>
 #include <QtCore/QCoreApplication>
+#include <QtCore/QStandardPaths>
+#include <QtCore/QCryptographicHash>
 #include <QtCore/QDir>
 
 LocalStorage * LocalStorage::qmlAttachedProperties(QObject *obj)
@@ -25,27 +27,32 @@ QmlSqlDatabaseData* LocalStorage::openDatabaseSync(
   QString description,
   int estimated_size)
 {
-  if (!QSqlDatabase::contains(dbname)) {
+  QString applicationDbRoot = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/db";
+  QString dirPath = QString("%1/%2")
+    .arg(applicationDbRoot)
+    .arg(folder);
+
+  QDir dir(dirPath);
+  if (!dir.exists())
+    dir.mkpath(dirPath);
+
+  QString basename = QString("%1/%2.sqlite")
+    .arg(dirPath)
+    .arg(dbname);
+
+  QCryptographicHash md5(QCryptographicHash::Md5);
+  md5.addData(basename.toUtf8());
+  QString dbid(QLatin1String(md5.result().toHex()));
+
+  if (!QSqlDatabase::contains(dbid)) {
     QSqlDatabase db;
 
-    QString dirPath = QString("%1/%2")
-      .arg(qApp->applicationDirPath())
-      .arg(folder);
-
-    QDir dir(dirPath);
-    if (!dir.exists())
-      dir.mkpath(dirPath);
-
-    QString basename = QString("%1/%2.sqlite")
-      .arg(dirPath)
-      .arg(dbname);
-
-    db = QSqlDatabase::addDatabase(QLatin1String("QSQLITE"), dbname);
+    db = QSqlDatabase::addDatabase(QLatin1String("QSQLITE"), dbid);
     db.setDatabaseName(basename);
     db.close();
   }
 
-   QmlSqlDatabaseData *sqlDb = new QmlSqlDatabaseData(this, dbname);
-   QDeclarativeEngine::setObjectOwnership(sqlDb, QDeclarativeEngine::JavaScriptOwnership);
-   return  sqlDb;
+  QmlSqlDatabaseData *sqlDb = new QmlSqlDatabaseData(this, dbid);
+  //QDeclarativeEngine::setObjectOwnership(sqlDb, QDeclarativeEngine::JavaScriptOwnership);
+  return  sqlDb;
 }

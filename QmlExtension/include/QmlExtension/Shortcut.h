@@ -1,5 +1,5 @@
 #pragma once
-#include <QDeclarativeItem>
+#include <QtQuick/QQuickItem>
 
 //More in http://kdeblog.mageprojects.com/2012/12/07/application-wide-shortcuts-in-qml-this-time-without-qshortcut/
 class Shortcut : public QObject

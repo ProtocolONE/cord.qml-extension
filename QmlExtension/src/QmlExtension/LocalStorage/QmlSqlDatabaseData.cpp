@@ -56,7 +56,7 @@ void QmlSqlDatabaseData::bindQueryValues(QSqlQuery &query, QVariant &args)
     QVariantList list = args.toList();
     int size = list.length();
 
-    for (quint32 ii = 0; ii < size; ++ii)
+    for (int ii = 0; ii < size; ++ii)
       query.bindValue(ii, list.at(ii));
   } else if (args.canConvert(QVariant::Map)) {
     QVariantMap map = args.toMap();

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <QtDeclarative\QDeclarativeItem>
 #include <QtWidgets\QGraphicsSceneWheelEvent>
+
+#include <QtQuick/QQuickItem>
 
 /*!
   \class WheelArea
@@ -9,11 +10,11 @@
   \author Ilya.Tkachenko
   \date 10.08.2012
 */
-class WheelArea : public QDeclarativeItem
+class WheelArea : public QQuickItem
 {
   Q_OBJECT
 public:
-  explicit WheelArea(QDeclarativeItem *parent = 0); 
+  explicit WheelArea(QQuickItem *parent = 0);
 
 protected:
   void wheelEvent(QGraphicsSceneWheelEvent *event);

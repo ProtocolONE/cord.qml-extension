@@ -238,14 +238,50 @@
     <ClCompile Include="src\QmlExtension\Shortcut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\WebView\NetworkAccessManager.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_LocalStorage.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_LocalStorage.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QmlSqlDatabaseData.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QmlSqlDatabaseData.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\LocalStorage\LocalStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\LocalStorage\QmlSqlDatabaseData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TextDocumentHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_browserdetect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TextDocumentHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\browserdetect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_browserdetect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_NetworkAccessManager.cpp">
-      <Filter>Generated Files\Debug</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_NetworkAccessManager.cpp">
-      <Filter>Generated Files\Release</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\TextDocumentHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\WebView\NetworkAccessManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -315,7 +351,19 @@
     <CustomBuild Include="include\QmlExtension\Shortcut.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\LocalStorage\LocalStorage.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\LocalStorage\QmlSqlDatabaseData.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="include\QmlExtension\WebView\NetworkAccessManager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\TextDocumentHelper.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\qmlextension\browserdetect.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

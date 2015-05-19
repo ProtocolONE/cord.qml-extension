@@ -29,6 +29,12 @@
 #include <QmlExtension/Host.h>
 #include <QmlExtension/StyleReader.h>
 #include <QmlExtension/Shortcut.h>
+#include <QmlExtension/BrowserDetect.h>
+#include <QmlExtension/TextDocumentHelper.h>
+
+
+#include <QmlExtension/LocalStorage/LocalStorage.h>
+#include <QmlExtension/LocalStorage/QmlSqlDatabaseData.h>
 
 #include <QtCore/QCoreApplication>
 
@@ -56,6 +62,11 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<GGS::MouseCursor>("Tulip", 1, 0, "MouseCursor", QLatin1String("Do not create objects of type MouseCursor"));
   qmlRegisterUncreatableType<QFileDialogAdapter>("Tulip", 1, 0, "QFileDialog", QLatin1String("Do not create objects of type QFileDialog"));
   qmlRegisterUncreatableType<StyleReader>("Tulip", 1, 0, "StyleReader", QLatin1String("Do not create objects of type StyleReader"));
+  qmlRegisterUncreatableType<BrowserDetect>("Tulip", 1, 0, "BrowserDetect", QLatin1String("Do not create objects of type BrowserDetect"));
+  qmlRegisterUncreatableType<TextDocumentHelper>("Tulip", 1, 0, "TextDocumentHelper", QLatin1String("Do not create objects of type TextDocumentHelper"));
+
+  qmlRegisterUncreatableType<LocalStorage>("Tulip", 1, 0, "LocalStorage", QLatin1String("Do not create objects of type LocalStorage"));
+  qmlRegisterUncreatableType<QmlSqlDatabaseData>("Tulip", 1, 0, "QmlSqlDatabaseData", QLatin1String("Do not create objects of type QmlSqlDatabaseData"));
 }
 
 void QmlExtension::initializeEngine(QDeclarativeEngine *engine, const char *uri)

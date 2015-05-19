@@ -3,7 +3,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 
-#include <QtDeclarative/QDeclarative.h>
+#include <QtQuick/QQuickItem>
 
 class TextDocumentHelper : public QObject
 {

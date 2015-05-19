@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QtDeclarative/QDeclarative.h>
+#include <QtQuick/QQuickItem>
 #include <QtCore/QObject>
 #include <QtCore/QString>
 

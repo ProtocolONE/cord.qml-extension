@@ -31,7 +31,6 @@ public:
   QString animatedSource() const;
 
 public slots:
-  void install(const QString& icon);
   void setIcon(const QString &iconSource);
   void setToolTip(const QString& toolTip);
   void hide();
@@ -46,6 +45,7 @@ private slots:
   void updateIcon();
 
 private:
+  void install();
   void clearAnimatedIcon();
 
   QSystemTrayIcon* _systray;

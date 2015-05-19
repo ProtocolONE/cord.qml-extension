@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Core/Marketing.h>
-#include <QtDeclarative/QDeclarative.h>
+#include <QtQuick/QQuickItem>
 
 namespace GGS {
 

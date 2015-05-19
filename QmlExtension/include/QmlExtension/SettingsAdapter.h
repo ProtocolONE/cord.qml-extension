@@ -7,7 +7,6 @@
 ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
-
 #pragma once
 
 #include <QtCore/QObject>
@@ -26,7 +25,7 @@ class SettingsAdapter : public QObject
 {
   Q_OBJECT
 public:
-  SettingsAdapter(QObject* parent = 0);
+  explicit SettingsAdapter(QObject* parent = 0);
   ~SettingsAdapter();
 
   Q_INVOKABLE void setValue(const QString& group, const QString& key, const QVariant& value) const;
