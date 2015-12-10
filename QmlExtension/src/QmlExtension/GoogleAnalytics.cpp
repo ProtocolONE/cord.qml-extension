@@ -23,18 +23,23 @@ QString GoogleAnalytics::systemLanguage()
 
 Q_INVOKABLE QString GoogleAnalytics::systemVersion()
 {
-  OSVERSIONINFOEX osvi;
+  QString winVersion;
+  switch (QSysInfo::windowsVersion()) {
+  case QSysInfo::WV_5_1: winVersion = "5.1"; break;
+  case QSysInfo::WV_6_0: winVersion = "6.0"; break;
+  case QSysInfo::WV_6_1: winVersion = "6.1"; break;
+  case QSysInfo::WV_6_2: winVersion = "6.2"; break;
+  case QSysInfo::WV_6_3: winVersion = "6.3"; break;
+  case QSysInfo::WV_10_0: winVersion = "10.0"; break;
+  default: winVersion = "6.1"; break;
+  }
 
-  ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
-  osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-  GetVersionEx((OSVERSIONINFO*) &osvi);
   BOOL isWow64 = FALSE;
   IsWow64Process(GetCurrentProcess(),&isWow64);
-  
-  QString result = QString("( Windows NT %1.%2;").arg(osvi.dwMajorVersion).arg(osvi.dwMinorVersion);
-  if (isWow64) {
-    result += " WOW64;";
-  }
+
+  QString result = QString("(Windows NT %1").arg(winVersion);
+  if (isWow64)
+    result += "; WOW64";
 
   result += ")";
 
