@@ -2,6 +2,7 @@
 
 #include <QtCore/QFileInfo>
 #include <QtCore/QSettings>
+#include <QtCore/QSysInfo>
 
 BrowserDetect::BrowserDetect(QObject* obj) : QObject(obj)
 {
@@ -17,6 +18,21 @@ BrowserDetect *BrowserDetect::qmlAttachedProperties(QObject *obj) {
 
 Q_INVOKABLE QString BrowserDetect::getBrowserName()
 {
+  if (QSysInfo::windowsVersion() >= QSysInfo::WV_WINDOWS10) {
+    QSettings userChoise("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice", QSettings::NativeFormat);
+    QString browserProgId = userChoise.value("ProgId").toString();
+
+    if (browserProgId == "IE.HTTP" || browserProgId == "AppXq0fevzme2pys62n3e0fbqa7peapykr8v") {
+      return "iexplore";
+    }
+
+    if (browserProgId == "FirefoxURL") {
+      return "firefox";
+    }
+
+    return browserProgId.toLower();
+  }
+
   QSettings startupSettings("HKEY_CURRENT_USER\\Software\\Clients\\StartMenuInternet\\", QSettings::NativeFormat);
   QString browserStartupName = startupSettings.value("Default").toString();
 
