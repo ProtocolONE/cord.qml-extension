@@ -16,8 +16,13 @@ public:
   static ClipboardAdapter* qmlAttachedProperties(QObject *obj);
 
 public:
+  Q_INVOKABLE void setText(QString text);
   Q_INVOKABLE bool hasText() const;
   Q_INVOKABLE QString text() const;
+
+  Q_INVOKABLE void setQuote(QString text, QString author, QString date);
+  Q_INVOKABLE bool hasQuote() const;
+  Q_INVOKABLE QString quote() const;
 
 private:
   QClipboard* _clipboard = nullptr;
