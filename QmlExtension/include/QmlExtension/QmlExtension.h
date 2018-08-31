@@ -16,7 +16,7 @@
 class QmlExtension : public QQmlExtensionPlugin
 {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID "vab.gamenet.Tulip" FILE "tulip.json")
+  Q_PLUGIN_METADATA(IID "vab.pone.Tulip" FILE "tulip.json")
 
 public:
   void registerTypes(const char *uri);

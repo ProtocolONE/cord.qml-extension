@@ -12,7 +12,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QVariant>
-#include <QtDeclarative/QDeclarative.h>
+#include <QtQuick/QQuickItem>
 
 /*!
   \class SettingsAdapter

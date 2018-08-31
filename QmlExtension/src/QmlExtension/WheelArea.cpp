@@ -2,7 +2,6 @@
 
 WheelArea::WheelArea(QQuickItem *parent /*= 0*/) : QQuickItem(parent)
 {
-
 }
 
 void WheelArea::wheelEvent(QGraphicsSceneWheelEvent *event)

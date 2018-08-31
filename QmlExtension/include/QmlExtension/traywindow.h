@@ -12,8 +12,7 @@
 #define TRAYWINDOW_H
 
 #include <QSystemTrayIcon.h>
-#include <QtDeclarative\QDeclarativeView>
-#include <QtDeclarative\QDeclarativeItem>
+#include <QtQuick/QQuickItem>
 
 class QMovie;
 

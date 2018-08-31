@@ -4,7 +4,7 @@
 #include <QtCore/QVariantMap>
 #include <QtQuick/QQuickItem>
 
-namespace GGS {
+namespace P1 {
   namespace Auth {
 
     /*!
@@ -46,4 +46,4 @@ namespace GGS {
   }
 }
 
-QML_DECLARE_TYPEINFO(GGS::Auth::RegistryCredentialStorage, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(P1::Auth::RegistryCredentialStorage, QML_HAS_ATTACHED_PROPERTIES)

@@ -35,12 +35,15 @@
 #include <QmlExtension/LocalStorage/QmlSqlDatabaseData.h>
 
 #include <QmlExtension/FileSystem.h>
+#include <QmlExtension/ClipboardAdapter.h>
 
 #include <QtCore/QCoreApplication>
 
 #include <QtWebEngine/QtWebEngine>
 #include <QtWebEngineWidgets/QtWebEngineWidgets>
 
+#include <QmlExtension/SslWebSocketServer.h>
+#include <QmlExtension/SslWebSocket.h>
 
 void QmlExtension::registerTypes(const char *uri)
 {
@@ -68,6 +71,10 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<Uuid>("Tulip", 1, 0, "Uuid", QLatin1String("Do not create objects of type Uuid"));
   qmlRegisterUncreatableType<StandardPaths>("Tulip", 1, 0, "StandardPaths", QLatin1String("Do not create objects of type StandardPaths"));
   qmlRegisterUncreatableType<FileSystem>("Tulip", 1, 0, "FileSystem", QLatin1String("Do not create objects of type FileSystem"));
+  qmlRegisterUncreatableType<ClipboardAdapter>("Tulip", 1, 0, "ClipboardAdapter", QLatin1String("Do not create objects of type ClipboardAdapter"));
+
+  qmlRegisterType<SslWebSocketServer>("Tulip", 1, 0, "SslWebSocketServer");
+  qmlRegisterType<SslWebSocket>("Tulip", 1, 0, "SslWebSocket");
 }
 
 void QmlExtension::initializeEngine(QQmlEngine *engine, const char *uri)

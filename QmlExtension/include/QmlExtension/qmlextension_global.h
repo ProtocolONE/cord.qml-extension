@@ -1,5 +1,4 @@
-#ifndef QMLEXTENSION_GLOBAL_H
-#define QMLEXTENSION_GLOBAL_H
+#pragma once
 
 #include <QtCore/qglobal.h>
 
@@ -8,5 +7,3 @@
 #else
 # define QMLEXTENSION_EXPORT Q_DECL_IMPORT
 #endif
-
-#endif // QMLEXTENSION_GLOBAL_H

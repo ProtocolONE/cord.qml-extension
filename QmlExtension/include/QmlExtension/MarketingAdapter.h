@@ -3,9 +3,9 @@
 #include <Core/Marketing.h>
 #include <QtQuick/QQuickItem>
 
-namespace GGS {
+namespace P1 {
 
-  class MarketingAdapter : public GGS::Core::Marketing
+  class MarketingAdapter : public P1::Core::Marketing
   {
     Q_OBJECT
   public:
@@ -40,7 +40,7 @@ namespace GGS {
                     этот параметр является обязательным.
     \param params    Дополнительные параметры.
     */
-    Q_INVOKABLE void sendOnceByService(GGS::Core::Marketing::MarketingTargets target, const QString& serviceId, const QVariantMap& params);
+    Q_INVOKABLE void sendOnceByService(P1::Core::Marketing::MarketingTargets target, const QString& serviceId, const QVariantMap& params);
 
     /*!
     \fn Q_INVOKABLE void Marketing::sendOnce(MarketingTargets target, const QString& serviceId,
@@ -55,10 +55,10 @@ namespace GGS {
                     перегруженными методами.
     \param params    Дополнительные параметры.
     */
-    Q_INVOKABLE void sendOnce(GGS::Core::Marketing::MarketingTargets target, const QString& serviceId, const QVariantMap& params);
+    Q_INVOKABLE void sendOnce(P1::Core::Marketing::MarketingTargets target, const QString& serviceId, const QVariantMap& params);
 
     Q_INVOKABLE QString mid();
   };
 }
 
-QML_DECLARE_TYPEINFO(GGS::MarketingAdapter, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(P1::MarketingAdapter, QML_HAS_ATTACHED_PROPERTIES)

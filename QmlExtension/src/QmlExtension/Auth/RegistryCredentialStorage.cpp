@@ -4,12 +4,13 @@
 #include <QtCore/QSettings>
 #include <QtCore/QCryptographicHash>
 
-namespace GGS {
+namespace P1 {
   namespace Auth {
 
+    // UNDONE change location of storage to opgname/appname
     RegistryCredentialStorage::RegistryCredentialStorage(QObject* parent)
       : QObject(parent)
-      , _path("HKEY_CURRENT_USER\\Software\\GGS\\QGNA\\")
+      , _path("HKEY_CURRENT_USER\\Software\\ProtocolOne\\Launcher\\")
     {
     }
 
@@ -87,8 +88,8 @@ namespace GGS {
 
     QVariantMap RegistryCredentialStorage::loadOldAuth()
     {
-      using GGS::Core::System::Registry::RegistryKey;
-      RegistryKey registry(RegistryKey::HKCU, "SOFTWARE\\GGS\\GNA\\");
+      using P1::Core::System::Registry::RegistryKey;
+      RegistryKey registry(RegistryKey::HKCU, "SOFTWARE\\ProtocolOne\\Launcher\\");
       QString login;
       QString passhash;
       registry.value("user", login);

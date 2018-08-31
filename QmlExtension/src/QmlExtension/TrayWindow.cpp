@@ -31,18 +31,13 @@ TrayWindow::~TrayWindow()
   this->hide();
 }
 
-void TrayWindow::install(const QString& icon) {
+void TrayWindow::install() {
   if (this->_systray) {
     this->_systray->hide();
     delete this->_systray;
   }
 
-  QIcon trayIcon = QIcon(icon);  
-
   this->_systray = new QSystemTrayIcon(this);
-  this->_systray->setIcon(trayIcon);
-  this->_systray->setVisible(true);
-  this->_systray->show();
 
   SIGNAL_CONNECT_CHECK(connect(this->_systray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), 
     this, SLOT(mouseClicked(QSystemTrayIcon::ActivationReason))));
@@ -54,21 +49,32 @@ void TrayWindow::setToolTip(const QString& toolTip)
     this->_systray->setToolTip(toolTip);
 }
 
-void TrayWindow::setIcon(const QString &iconSource) {
-  if (!this->_systray) {
-    this->install(iconSource);
-  }
+void TrayWindow::setIcon(const QString &source)
+{
+  if (!this->_systray)
+    this->install();
 
   this->clearAnimatedIcon();
 
-  QIcon trayIcon = QIcon(iconSource);  
+  if (source.isEmpty()) {
+    this->hide();
+    return;
+  }
+
+  QIcon trayIcon = QIcon(source);  
   this->_systray->setIcon(trayIcon);
+  this->_systray->show();
 }
 
 void TrayWindow::setAnimatedSource(const QString &source)
 {
+  if (!this->_systray)
+    this->install();
+
+  this->clearAnimatedIcon();
+
   if (source.isEmpty()) {
-    this->clearAnimatedIcon();
+    this->hide();
     return;
   }
 
@@ -80,6 +86,9 @@ void TrayWindow::setAnimatedSource(const QString &source)
 
 QString TrayWindow::animatedSource() const
 {
+  if (!this->_animatedIcon)
+    return QString();
+
   if (this->_animatedIcon->isValid())
     this->_animatedIcon->fileName();
   
@@ -88,10 +97,15 @@ QString TrayWindow::animatedSource() const
 
 void TrayWindow::updateIcon()
 {
+  if (!this->_animatedIcon)
+    return;
+
   this->_systray->setIcon(this->_animatedIcon->currentPixmap());
+  this->_systray->show();
 }
 
-void TrayWindow::hide() {
+void TrayWindow::hide()
+{
   if (this->_systray)
     this->_systray->hide();
 }

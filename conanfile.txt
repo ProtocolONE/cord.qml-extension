@@ -1,0 +1,9 @@
+[requires]
+Core/1.0.1@common/stable
+Settings/1.0.1@common/stable
+
+[generators]
+visual_studio
+
+[imports]
+bin, *.dll -> ./bin # Copies all dll files from packages bin folder to my "bin" folder

@@ -1,9 +1,9 @@
 #include <QmlExtension/MarketingAdapter.h>
 #include <QtCore/QSettings>
 
-using GGS::Core::Marketing;
+using P1::Core::Marketing;
 
-namespace GGS {
+namespace P1 {
 
   MarketingAdapter::MarketingAdapter(QObject* parent) : Marketing(parent)
   {
@@ -35,7 +35,7 @@ namespace GGS {
 
   QString MarketingAdapter::mid()
   {
-    QSettings settings("HKEY_LOCAL_MACHINE\\Software\\GGS\\QGNA", QSettings::NativeFormat);
+    QSettings settings("HKEY_LOCAL_MACHINE\\Software\\ProtocolOne\\Launcher", QSettings::NativeFormat);
     return settings.value("MID", "").toString();
   }
 
