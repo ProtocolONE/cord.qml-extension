@@ -69,8 +69,7 @@ class CoreConan(ConanFile):
       self.cpp_info.exelinkflags = []  # linker flags
       
       if self.options.shared == "False":
-        self.cpp_info.exelinkflags.append("{0}_STATIC_LIB".format(componentName.upper()))
-        self.cpp_info.sharedlinkflags.append("{0}_STATIC_LIB".format(componentName.upper()))
+        self.cpp_info.defines.append("{0}_STATIC_LIB".format(componentName.upper()))
       
 
       
