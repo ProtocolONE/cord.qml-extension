@@ -6,4 +6,4 @@ conan install . -pr msvcprofiled
 conan create . %PackageName% -pr msvcprofiled
 
 @rem conan test CoreTest Core/1.0.0@common/stable -pr msvcprofile
-@rem conan upload %PackageName% --all -r=p1
+conan upload %PackageName% --all -r=p1
