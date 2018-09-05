@@ -1,4 +1,5 @@
 from conans import ConanFile, MSBuild, VisualStudioBuildEnvironment, tools
+import os, platform
 
 componentName = "QmlExtension"
 
@@ -23,25 +24,15 @@ class CoreConan(ConanFile):
         customBuildType = self.settings.get_safe("build_type")
         if self.options.shared == "False":
           customBuildType = 'Static {0}'.format(customBuildType)
-    
+
         msbuild = MSBuild(self)
-        msbuild.build(
-        "{0}/{0}.vcxproj".format(componentName)
-         , build_type = customBuildType
-         , platforms={ 
-            "x86" : "Win32"
-            ,'x86_64' : 'x64'
-          }
-      )
+        msbuild.build("{0}/{0}.vcxproj".format(componentName), build_type = customBuildType, platforms={"x86" : "Win32", 'x86_64' : 'x64'})
 
     def package(self):
         self.copy("*", dst="include", src="{0}/include".format(componentName))
         self.copy("*.ts", dst="i18n", keep_path=False)
-        self.copy("*.lib", dst="lib", keep_path=False)
-        self.copy("*.dll", dst="bin", keep_path=False)
-        self.copy("*.dylib*", dst="lib", keep_path=False)
-        self.copy("*.so", dst="lib", keep_path=False)
-        self.copy("*.a", dst="lib", keep_path=False)
+        self.copy("*.dll", dst="plugin/Tulip", keep_path=False)
+        self.copy("qmldir", dst="plugin/Tulip", keep_path=False)
 
     def package_info(self):
       name = componentName
