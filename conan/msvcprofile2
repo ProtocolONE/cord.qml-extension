@@ -1,21 +1,19 @@
 [settings]
 os=Windows
 arch=x86
-os_build=Windows
-arch_build=x86
 compiler=Visual Studio
 compiler.version=15
-compiler.runtime=MDd
+compiler.runtime=MD
 compiler.toolset=v141_xp
-build_type=Debug
+build_type=Release
+os_build=Windows
+arch_build=x86
 
 [options]
-shared=True
 Core:shared=False
 Settings:shared=False
+yaml-cpp:shared=False
+QtYaml:shared=False
 
 [build_requires]
-Core/1.0.0@common/stable
-Settings/1.0.0@common/stable
-
 [env]

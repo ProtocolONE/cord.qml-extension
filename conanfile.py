@@ -3,9 +3,9 @@ import os, platform
 
 componentName = "QmlExtension"
 
-class CoreConan(ConanFile):
+class QmlExtensionConan(ConanFile):
     name = componentName
-#    version = "1.0"
+    #version = "1.0.0"
     license = "<Put the package license here>"
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of Core here>"
@@ -22,8 +22,8 @@ class CoreConan(ConanFile):
     
     def build(self):
         customBuildType = self.settings.get_safe("build_type")
-        if self.options.shared == "False":
-          customBuildType = 'Static {0}'.format(customBuildType)
+        #if self.options.shared == "False":
+          #customBuildType = 'Static {0}'.format(customBuildType)
 
         msbuild = MSBuild(self)
         msbuild.build("{0}/{0}.vcxproj".format(componentName), build_type = customBuildType, platforms={"x86" : "Win32", 'x86_64' : 'x64'})
@@ -46,7 +46,8 @@ class CoreConan(ConanFile):
         name += "d"
 
       name += ".lib"
-      self.cpp_info.libs = [name] # The libs to link against
+      if self.options.shared == "False":
+        self.cpp_info.libs = [name] # The libs to link against
       
       
       self.cpp_info.includedirs = ['include']  # Ordered list of include paths
