@@ -28,3 +28,4 @@ QVariantMap ConfigReader::read(const QString& path) const
   }
   return result;
 }
+      
