@@ -44,12 +44,6 @@
 #include <QtWidgets/QDesktopWidget>
 #include <QtDeclarative/QDeclarative.h>
 
-/*!
-  \class QDesktopItem
-  \brief Позволяет получать гемотрию экрана и уведомления о изменениях.
-  \author Ilya.Tkachenko
-  \date 10.08.2012
-*/
 class QDesktopItem : public QObject
 {
     Q_OBJECT

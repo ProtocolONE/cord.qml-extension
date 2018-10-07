@@ -26,7 +26,7 @@ int TaskList::addItem(int categoryId, QString icon, QString name, QString descri
     item.setIcon(icon);
     item.setName(name);
     item.setDescription(description);
-    item.setUrl("gamenet://" + params);
+    item.setUrl("protocolone://" + params);
     item.setParams("");
 
     return this->_manager.addItem(categoryId, item);
@@ -38,7 +38,7 @@ int TaskList::addTask(QString icon,  QString name, QString description, QString 
     item.setIcon(icon);
     item.setName(name);
     item.setDescription(description);
-    item.setUrl("gamenet://" + params);
+    item.setUrl("protocolone://" + params);
     item.setParams("");
 
     return this->_manager.addTask(item);

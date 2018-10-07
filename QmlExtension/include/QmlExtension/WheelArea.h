@@ -4,12 +4,6 @@
 
 #include <QtQuick/QQuickItem>
 
-/*!
-  \class WheelArea
-  \brief Класс реализует возможность получать события о горизонтально/вертикальном скролле мышки.
-  \author Ilya.Tkachenko
-  \date 10.08.2012
-*/
 class WheelArea : public QQuickItem
 {
   Q_OBJECT

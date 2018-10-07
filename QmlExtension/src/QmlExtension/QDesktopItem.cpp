@@ -41,6 +41,9 @@
 
 #include <QtWidgets/QApplication>
 #include <QtCore/QPoint>
+#include <QtCore/QVariantMap>
+
+#include <Windows.h>
 
 QDesktopItem::QDesktopItem(QObject* obj) : QObject(obj) {
     connect(QApplication::desktop(), SIGNAL(resized(int)), this, SIGNAL(screenGeometryChanged()));
@@ -65,6 +68,25 @@ QRect QDesktopItem::screenGeometry(int screen) const {
 
 QRect QDesktopItem::availableGeometry(int screen) const {
     return QApplication::desktop()->availableGeometry(screen);
+}
+
+Q_INVOKABLE QVariantList QDesktopItem::availableResolutions()
+{
+  DEVMODE dm = { 0 };
+  QVariantList resolutions;
+
+  dm.dmSize = sizeof(dm);
+  for (int i = 0; EnumDisplaySettings(NULL, i, &dm) != 0; i++) {
+    QVariantMap resolution;
+    resolution["width"] = QVariant(static_cast<uint>(dm.dmPelsWidth));
+    resolution["height"] = QVariant(static_cast<uint>(dm.dmPelsHeight));
+    
+    if (!resolutions.contains(resolution)) {
+      resolutions.append(resolution);
+    }
+  }
+    
+  return resolutions;
 }
 
 int QDesktopItem::screenWidth() const

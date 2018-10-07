@@ -26,6 +26,7 @@
 
 #include <QmlExtension/FileSystem.h>
 #include <QmlExtension/ClipboardAdapter.h>
+#include <QmlExtension/ConfigReader.h>
 
 #include <QtCore/QCoreApplication>
 
@@ -38,7 +39,7 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterType<P1::MarketingAdapter>("Tulip", 1, 0, "Marketing");
   qmlRegisterType<Shortcut>("Tulip", 1, 0, "Shortcut");
   qmlRegisterType<ThemePack>("Tulip", 1, 0, "ThemePack");
-  
+
   qmlRegisterUncreatableType<QDesktopItem>("Tulip", 1, 0, "Desktop", QLatin1String("Do not create objects of type Desktop"));
   qmlRegisterUncreatableType<SettingsAdapter>("Tulip", 1, 0, "Settings", QLatin1String("Do not create objects of type Settings"));
   qmlRegisterUncreatableType<Host>("Tulip", 1, 0, "Host", QLatin1String("Do not create objects of type Host"));
@@ -59,6 +60,7 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<StandardPaths>("Tulip", 1, 0, "StandardPaths", QLatin1String("Do not create objects of type StandardPaths"));
   qmlRegisterUncreatableType<FileSystem>("Tulip", 1, 0, "FileSystem", QLatin1String("Do not create objects of type FileSystem"));
   qmlRegisterUncreatableType<ClipboardAdapter>("Tulip", 1, 0, "ClipboardAdapter", QLatin1String("Do not create objects of type ClipboardAdapter"));
+  qmlRegisterUncreatableType<ConfigReader>("Tulip", 1, 0, "ConfigReader", QLatin1String("Do not create objects of type ConfigReader"));
 
   qmlRegisterType<SslWebSocketServer>("Tulip", 1, 0, "SslWebSocketServer");
   qmlRegisterType<SslWebSocket>("Tulip", 1, 0, "SslWebSocket");
