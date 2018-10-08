@@ -1,4 +1,8 @@
 #include <QtCore/QDebug>
+#include <QtCore/QCoreApplication>
+
+#include <QtNetwork/QNetworkDiskCache>
+
 #include <QmlExtension/WebView/CustomNetworkManagerFactory.h>
 #include <QmlExtension/WebView/PersistentCookieJar.h>
 
@@ -26,6 +30,14 @@ namespace GGS {
     QNetworkAccessManager* CustomNetworkManagerFactory::create(QObject *parent)
     {
       this->_networkManager = new QNetworkAccessManager(parent);
+
+      QString cacheDirectory = QString("%1/Cache/").arg(QCoreApplication::applicationDirPath());
+
+      QNetworkDiskCache* cache = new QNetworkDiskCache();
+      cache->setCacheDirectory(cacheDirectory);
+      cache->setMaximumCacheSize(209715200i64);
+
+      this->_networkManager->setCache(cache);
       this->_networkManager->setCookieJar(this->_cookieJar);
       this->_cookieJar->setParent(this->parent());
 

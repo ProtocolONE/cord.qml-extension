@@ -252,10 +252,11 @@ xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(
     <ClCompile Include="src\QmlExtension\SettingsAdapter.cpp" />
     <ClCompile Include="src\QmlExtension\QCursorArea.cpp" />
     <ClCompile Include="src\QmlExtension\QDesktopItem.cpp" />
-    <ClCompile Include="src\QmlExtension\QmlExtension.cpp" />
+    <ClCompile Include="src\QmlExtension.cpp" />
     <ClCompile Include="src\QmlExtension\QTopLevelWindow.cpp" />
     <ClCompile Include="src\QmlExtension\QWindowItem.cpp" />
     <ClCompile Include="src\QmlExtension\WheelArea.cpp" />
+    <ClCompile Include="src\QmlExtension\StyleReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="include\QmlExtension\QDesktopItem.h">
@@ -394,6 +395,16 @@ xcopy /Y /I /R /E "$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\bin\CoreX86%D%.dll" "$(
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing SettingsAdapter.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_DECLARATIVE_LIB -DQMLEXTENSION_LIB -DQT_NETWORK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_CONCURRENT_LIB -DQT_GUI_LIB -D_WINDLL -D_UNICODE  "-I.\GeneratedFiles" "-I." "-I$(ProjectDir)\include" "-I$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\include" "-I$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\include" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtQml" "-I$(QTDIR)\include\QtQuick" "-I$(QTDIR)\include\QtWebKit" "-I$(QTDIR)\include\QtWebkitWidgets" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtConcurrent" "-I$(QTDIR)\include\QtGui"</Command>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\StyleReader.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing StyleReader.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB -DQT_DECLARATIVE_LIB -DQMLEXTENSION_LIB -DQT_NETWORK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_CONCURRENT_LIB -DQT_GUI_LIB -DNOMINMAX -D_WINDLL -D_UNICODE "-I.\GeneratedFiles" "-I$(ProjectDir)\include" "-I." "-I$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\include" "-I$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\include" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QGNACOMMONDIR)\Qxmpp\$(QxmppArea)\include\qxmpp" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtQml" "-I$(QTDIR)\include\QtQuick" "-I$(QTDIR)\include\QtWebKit" "-I$(QTDIR)\include\QtWebkitWidgets" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtConcurrent" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing StyleReader.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_DECLARATIVE_LIB -DQMLEXTENSION_LIB -DQT_NETWORK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_CONCURRENT_LIB -DQT_GUI_LIB -DNOMINMAX -D_WINDLL -D_UNICODE "-I.\GeneratedFiles" "-I." "-I$(ProjectDir)\include" "-I$(QGNACOMMONDIR)\GGS\Core\$(CoreArea)\include" "-I$(QGNACOMMONDIR)\GGS\Settings\$(SettingsArea)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QGNACOMMONDIR)\Qxmpp\$(QxmppArea)\include\qxmpp" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtDeclarative" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtQml" "-I$(QTDIR)\include\QtQuick" "-I$(QTDIR)\include\QtWebKit" "-I$(QTDIR)\include\QtWebkitWidgets" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtConcurrent" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE"</Command>
     </CustomBuild>
     <ClInclude Include="version.h" />
     <CustomBuild Include="include\QmlExtension\QWindowItem.h">

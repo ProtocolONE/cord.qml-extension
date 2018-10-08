@@ -41,9 +41,6 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\QmlExtension\WebView\PersistentCookieJar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\QmlExtension\qmlextension_global.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -133,15 +130,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_RegistryCredentialStorage.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Tulip.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Tulip.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tulip.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QWindowItem.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -196,6 +184,42 @@
     <ClCompile Include="GeneratedFiles\Release\moc_MouseCursor.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QMultimedia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QMultimedia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QMultimedia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QmlExtension.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QTopLevelWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_WheelArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QmlExtension.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QTopLevelWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_WheelArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\QmlExtension.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\QTopLevelWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlExtension\WheelArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QCursorArea.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -234,9 +258,6 @@
     <CustomBuild Include="include\QmlExtension\Auth\RegistryCredentialStorage.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\Tulip.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="include\QmlExtension\QWindowItem.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -252,17 +273,29 @@
     <CustomBuild Include="include\QmlExtension\Jabber.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\MouseCursor.h">
+    <CustomBuild Include="include\QmlExtension\WebView\PersistentCookieJar.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\QMultimedia.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\QTopLevelWindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\WheelArea.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\QmlExtension.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="include\QmlExtension\QCursorArea.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="include\QmlExtension\MouseCursor.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="QmlExtension.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="tulip.json" />
   </ItemGroup>
 </Project>
