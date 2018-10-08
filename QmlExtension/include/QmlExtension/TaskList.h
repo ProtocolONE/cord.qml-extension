@@ -1,23 +1,23 @@
 /****************************************************************************
 ** This file is a part of Syncopate Limited GameNet Application or it parts.
 **
-** Copyright (�) 2011 - 2013, Syncopate Limited and/or affiliates. 
+** Copyright (©) 2011 - 2013, Syncopate Limited and/or affiliates. 
 ** All rights reserved.
 **
 ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ****************************************************************************/
-
 #pragma once
 
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QObject>
-#include <QtDeclarative/QtDeclarative>
-#include <Core/System/TaskList/TaskItem.h>
 #include <Core/System/TaskList/TaskManager.h>
 
+#include <QtCore/QObject>
+#include <QtCore/QString>
+
+#include <QtDeclarative/QtDeclarative>
+
+// UNDONE Ужасная строчка без, которой не компилиться moc_TaskList. 
+// Очень бы хотелось найти того кто ее написал когда писала этот код и убить.
 using namespace GGS::Core::System::TaskList;
 
 class TaskList: public QObject
@@ -27,7 +27,7 @@ class TaskList: public QObject
 
 public:
   explicit TaskList(QObject* parent = 0);
-  ~TaskList();
+  virtual ~TaskList();
 
   public:
     Q_INVOKABLE int addCategory(const QString& name);
@@ -46,9 +46,7 @@ public:
     static TaskList *qmlAttachedProperties(QObject *obj);
 
 private:
-  TaskManager _manager;
-
+  ::GGS::Core::System::TaskList::TaskManager _manager;
 };
 
 QML_DECLARE_TYPEINFO(TaskList, QML_HAS_ATTACHED_PROPERTIES)
-

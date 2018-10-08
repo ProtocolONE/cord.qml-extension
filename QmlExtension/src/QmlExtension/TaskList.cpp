@@ -9,13 +9,15 @@
 ****************************************************************************/
 
 #include <QmlExtension/TaskList.h>
-#include <QtCore/QString>
-#include <QCoreApplication>
-#include <qDebug>
+
+#include <Core/System/TaskList/TaskItem.h>
+
+#include <QtCore/QCoreApplication>
 
 using namespace GGS::Core::System::TaskList;
 
 TaskList::TaskList(QObject* parent) 
+  : QObject(parent)
 {
 }
 
@@ -23,52 +25,63 @@ TaskList::~TaskList()
 {
 }
 
-void TaskList::apply() {
+void TaskList::apply()
+{
   this->_manager.apply();
 }
 
-int TaskList::addItem(int categoryId, QString icon, QString name, QString description, QString params) {
+int TaskList::addItem(int categoryId, QString icon, QString name, QString description, QString params)
+{
     TaskItem item;
     item.setIcon(icon);
     item.setName(name);
     item.setDescription(description);
-    item.setUrl(QCoreApplication::applicationFilePath());
+    QString hostPath = QString("%1\\%2").arg(QCoreApplication::applicationDirPath(), "qGNA.exe");
+    item.setUrl(hostPath);
     item.setParams(params);
 
     return this->_manager.addItem(categoryId, item);
 }
 
-int TaskList::addTask(QString icon,  QString name, QString description, QString params) {
+int TaskList::addTask(QString icon,  QString name, QString description, QString params)
+{
     TaskItem item;
     item.setIcon(icon);
     item.setName(name);
     item.setDescription(description);
-    item.setUrl(QCoreApplication::applicationFilePath());
+    QString hostPath = QString("%1\\%2").arg(QCoreApplication::applicationDirPath(), "qGNA.exe");
+    item.setUrl(hostPath);
     item.setParams(params);
 
     return this->_manager.addTask(item);
 }
 
-TaskList *TaskList::qmlAttachedProperties(QObject *obj) {
+TaskList *TaskList::qmlAttachedProperties(QObject *obj)
+{
   return new TaskList(obj);
 }
 
-int TaskList::addCategory( const QString& name ) {
+int TaskList::addCategory( const QString& name )
+{
   return this->_manager.addCategory(name);
 }
 
-void TaskList::removeCategory(int id) {
+void TaskList::removeCategory(int id)
+{
   this->_manager.removeCategory(id);
 }
 
-void TaskList::setGuid(const QString& guid) {
+void TaskList::setGuid(const QString& guid)
+{
   this->_manager.setGuid(guid);
 }
 
-void TaskList::removeAllTasks() {
+void TaskList::removeAllTasks()
+{
   this->_manager.removeAllTasks();
 }
 
-void TaskList::removeAll() {
+void TaskList::removeAll()
+{
   this->_manager.removeAll();
 }

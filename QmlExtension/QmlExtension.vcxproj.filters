@@ -157,15 +157,6 @@
     <ClCompile Include="src\QmlExtension\TaskList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\Jabber.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Jabber.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Jabber.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="src\QmlExtension\MouseCursor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -247,23 +238,14 @@
     <ClCompile Include="src\QmlExtension\Shortcut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_LocalStorage.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_LocalStorage.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QmlSqlDatabaseData.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QmlSqlDatabaseData.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\QmlExtension\LocalStorage\LocalStorage.cpp">
+    <ClCompile Include="src\QmlExtension\WebView\NetworkAccessManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\LocalStorage\QmlSqlDatabaseData.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GeneratedFiles\Debug\moc_NetworkAccessManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_NetworkAccessManager.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -303,9 +285,6 @@
     <CustomBuild Include="include\QmlExtension\TaskList.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\Jabber.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="include\QmlExtension\WebView\PersistentCookieJar.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -336,10 +315,7 @@
     <CustomBuild Include="include\QmlExtension\Shortcut.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\LocalStorage\LocalStorage.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="include\QmlExtension\LocalStorage\QmlSqlDatabaseData.h">
+    <CustomBuild Include="include\QmlExtension\WebView\NetworkAccessManager.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
