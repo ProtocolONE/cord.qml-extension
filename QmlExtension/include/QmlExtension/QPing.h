@@ -13,11 +13,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QFutureWatcher>
-<<<<<<< HEAD
-#include <QtDeclarative/QtDeclarative>
-=======
 #include <QtDeclarative/QDeclarative.h>
->>>>>>> 37f521a... QGNA-448 Qt5
 
 /*!
 \class Ping

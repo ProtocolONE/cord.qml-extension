@@ -13,15 +13,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QVariant>
-<<<<<<< HEAD
-<<<<<<< HEAD
-#include <QtDeclarative/QtDeclarative>
-=======
-#include <QtQml>
->>>>>>> 10e6b27... QGNA-0 Qt5 support
-=======
 #include <QtDeclarative/QDeclarative.h>
->>>>>>> 37f521a... QGNA-448 Qt5
 
 /*!
   \class SettingsAdapter
@@ -34,7 +26,7 @@ class SettingsAdapter : public QObject
 {
   Q_OBJECT
 public:
-  explicit SettingsAdapter(QObject* parent = 0);
+  SettingsAdapter(QObject* parent = 0);
   ~SettingsAdapter();
 
   Q_INVOKABLE void setValue(const QString& group, const QString& key, const QVariant& value) const;
@@ -43,8 +35,4 @@ public:
   static SettingsAdapter *qmlAttachedProperties(QObject *obj);
 };
 
-<<<<<<< HEAD
 QML_DECLARE_TYPEINFO(SettingsAdapter, QML_HAS_ATTACHED_PROPERTIES)
-=======
-QML_DECLARE_TYPEINFO(SettingsAdapter, QML_HAS_ATTACHED_PROPERTIES)
->>>>>>> 10e6b27... QGNA-0 Qt5 support

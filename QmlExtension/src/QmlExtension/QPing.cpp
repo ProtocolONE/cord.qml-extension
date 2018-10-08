@@ -10,14 +10,9 @@
 
 
 #include <QmlExtension/QPing.h>
-<<<<<<< HEAD
-
-#ifdef WIN32
-=======
 /*
 #ifdef WIN32
 
->>>>>>> 37f521a... QGNA-448 Qt5
 #include <winsock2.h>
 #include <iphlpapi.h>
 #include <icmpapi.h>
@@ -26,11 +21,7 @@
 #pragma comment(lib, "iphlpapi.lib")
 #pragma comment(lib, "ws2_32.lib")
 #endif
-<<<<<<< HEAD
-
-=======
 */
->>>>>>> 37f521a... QGNA-448 Qt5
 QPing::QPing(QObject* parent) {
 }
 
@@ -39,16 +30,10 @@ QPing::~QPing() {
 
 void QPing::sync(QString url) 
 {   
-<<<<<<< HEAD
-#ifdef WIN32
-    struct in_addr addr;
-    std::string string_host = url.toAscii();
-=======
   /*
 #ifdef WIN32
     struct in_addr addr;
     std::string string_host = url.toLocal8Bit();
->>>>>>> 37f521a... QGNA-448 Qt5
     const char* host = string_host.c_str();
 
     if (isalpha(host[0])) {
@@ -97,32 +82,15 @@ void QPing::sync(QString url)
 
     IcmpCloseHandle(icmpFile);
     emit this->failed();
-<<<<<<< HEAD
-#else
-    emit this->failed();
-    qDebug() << "This function, not Implemented";
-    return;       
-#endif
-=======
 #else*/
     emit this->failed();
     qDebug() << "This function, not Implemented";
     return;       
 //#endif
->>>>>>> 37f521a... QGNA-448 Qt5
 }
 
 void QPing::start(const QString& url) 
 {   
-<<<<<<< HEAD
-    if (watcher.isRunning()) {
-        qDebug() << "Warning, ping allready in progress";
-        return;
-    }
-
-    QFuture<void> result = QtConcurrent::run(this, &QPing::sync, url);
-    watcher.setFuture(result);
-=======
 //     if (watcher.isRunning()) {
 //         qDebug() << "Warning, ping allready in progress";
 //         return;
@@ -130,5 +98,4 @@ void QPing::start(const QString& url)
 // 
 //     QFuture<void> result = QtConcurrent::run(this, &QPing::sync, url);
 //     watcher.setFuture(result);
->>>>>>> 37f521a... QGNA-448 Qt5
 }
