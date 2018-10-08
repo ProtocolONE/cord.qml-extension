@@ -15,6 +15,8 @@
 
 #include <QtDeclarative/QDeclarativeItem>
 
+#include <QXmppClient.h>
+
 class QXmppClient;
 
 namespace GGS {
@@ -55,11 +57,17 @@ namespace GGS {
     void logout();
 
   signals:
+    void error(int code);
+    void connected();
+
     void loginChanged();
     void passwordChanged();
     void hostChanged();
     void domainChanged();
     void debugChanged();
+
+  private slots:
+    void xmppError(QXmppClient::Error result);
 
   private:
     QXmppClient *_client;

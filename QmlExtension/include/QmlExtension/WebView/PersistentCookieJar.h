@@ -26,8 +26,10 @@ namespace GGS {
 
       void setCookiesFromUrl(const QString &cookies, const QString &url);
       QString cookiesForUrl(const QString &url);
+
     protected:
       QByteArray cookiesFromList(const QList<QNetworkCookie> &list);
+
     private:
       void save();
       void load();

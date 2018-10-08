@@ -27,6 +27,7 @@ namespace GGS {
     {
       this->_networkManager = new QNetworkAccessManager(parent);
       this->_networkManager->setCookieJar(this->_cookieJar);
+      this->_cookieJar->setParent(this->parent());
 
       connect(this->_networkManager,SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)),
         this,SLOT(onIgnoreSSLErrors(QNetworkReply*, QList<QSslError>)));

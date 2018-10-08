@@ -21,6 +21,8 @@ namespace GGS {
     , _debug(false)
   {
     QXmppLogger::getLogger()->setLoggingType(QXmppLogger::NoLogging);
+    QObject::connect(this->_client, SIGNAL(error(QXmppClient::Error)), this, SLOT(xmppError(QXmppClient::Error)));
+    QObject::connect(this->_client, SIGNAL(connected()), this, SIGNAL(connected()));
   }
 
   Jabber::~Jabber()
@@ -115,6 +117,11 @@ namespace GGS {
     QXmppLogger::getLogger()->setLoggingType(value ? QXmppLogger::StdoutLogging : QXmppLogger::NoLogging);
 
     emit this->debugChanged(); 
+  }
+
+  void Jabber::xmppError(QXmppClient::Error result)
+  {
+    emit this->error(static_cast<int>(result));
   }
 
 }

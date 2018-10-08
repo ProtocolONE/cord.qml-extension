@@ -31,7 +31,8 @@ void TrayWindow::install(const QString& icon) {
   this->_systray->setVisible(true);
   this->_systray->show();
 
-  SIGNAL_CONNECT_CHECK(connect(this->_systray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(mouseClicked(QSystemTrayIcon::ActivationReason))));
+  SIGNAL_CONNECT_CHECK(connect(this->_systray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), 
+    this, SLOT(mouseClicked(QSystemTrayIcon::ActivationReason))));
 }
 
 TrayWindow::~TrayWindow()

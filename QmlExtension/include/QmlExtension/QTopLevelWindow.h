@@ -56,8 +56,8 @@ public:
     QTopLevelWindow();
     ~QTopLevelWindow();
 
-    QGraphicsScene *scene() { return _view->scene(); }
-    QDeclarativeView *view() { return _view; }
+    QGraphicsScene *scene();
+    QDeclarativeView *view();
 
     void registerChildWindow(QTopLevelWindow* child);
     void hideChildWindows();
@@ -69,7 +69,7 @@ public:
     void move(const QPoint &);
 
 protected:
-    virtual bool event(QEvent *event);
+    virtual bool event(QEvent *event) override;
 
 Q_SIGNALS:
     void visibilityChanged();
