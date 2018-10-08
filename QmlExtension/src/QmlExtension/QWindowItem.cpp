@@ -45,163 +45,164 @@
 #include <Windows.h>
 
 QWindowItem::QWindowItem()
-    : _window(new QTopLevelWindow), _positionIsDefined(false), _delayedVisible(false), _deleteOnClose(true), _x(0), _y(0)
+  : _window(new QTopLevelWindow), _positionIsDefined(false), _delayedVisible(false), _deleteOnClose(true), _x(0), _y(0)
 {
-    connect(_window, SIGNAL(visibilityChanged()), this, SIGNAL(visibleChanged()));
-    connect(_window, SIGNAL(windowStateChanged()), this, SIGNAL(windowStateChanged()));
-    connect(_window, SIGNAL(sizeChanged(QSize)), this, SLOT(updateSize(QSize)));
-    view()->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-    _window->installEventFilter(this);
+  connect(_window, SIGNAL(visibilityChanged()), this, SIGNAL(visibilityChanged()));
+  connect(_window, SIGNAL(windowStateChanged()), this, SIGNAL(windowStateChanged()));
+  connect(_window, SIGNAL(sizeChanged(QSize)), this, SLOT(updateSize(QSize)));
+  view()->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+  _window->installEventFilter(this);
 }
 
 QWindowItem::~QWindowItem()
 {
-    delete _window;
+  delete _window;
 }
 
 void QWindowItem::activate()
 {
-    this->window()->showMinimized();  
-    this->window()->setWindowState(Qt::WindowActive);  
-    this->window()->showNormal();  
-    this->window()->setFocus();
+  this->window()->showMinimized();  
+  this->window()->setFocusPolicy(Qt::StrongFocus);
+  this->window()->setWindowState(Qt::WindowActive);  
+  this->window()->showNormal();  
+  this->window()->setFocus();
+  this->window()->activateWindow();
 }
 
-bool QWindowItem::eventFilter(QObject *, QEvent *ev)
+bool QWindowItem::eventFilter(QObject *p, QEvent *ev)
 {
-    switch(ev->type()) {
-    case QEvent::Close:
-        ev->ignore();
-        emit this->beforeClosed();
-        if (_deleteOnClose)
-            deleteLater();
-        else
-            _window->hide();
-        return true;
-    case QEvent::Resize:
-        emit sizeChanged();
-        emit widthChanged();
-        emit heightChanged();
-        break;
+  switch(ev->type()) {
+  case QEvent::Close: 
+    ev->ignore();
+    emit this->beforeClosed();
+    if (_deleteOnClose)
+      deleteLater();
+    else
+      _window->hide();
+    return true;
+  case QEvent::Resize:
+    emit sizeChanged();
+    emit widthChanged();
+    emit heightChanged();
+    break;
+  case QEvent::Move:
+    emit xChanged();
+    emit yChanged();
+    break;
 
-    case QEvent::Move:
-        emit xChanged();
-        emit yChanged();
-        break;
-
-    default:
-        break;
-    }
-    return false;
+  default:
+    break;
+  }
+  return false;
 }
 
 void QWindowItem::registerChildWindow(QWindowItem *child) {
-    _window->registerChildWindow(child->window());
+  _window->registerChildWindow(child->window());
 }
 
 void QWindowItem::updateParentWindow() {
-    QDeclarativeItem *p = parentItem();
-    while (p) {
-        if (QWindowItem *w = qobject_cast<QWindowItem*>(p)) {
-            w->registerChildWindow(this);
-            return;
-        }
-        p = p->parentItem();
+  QDeclarativeItem *p = parentItem();
+  while (p) {
+    if (QWindowItem *w = qobject_cast<QWindowItem*>(p)) {
+      w->registerChildWindow(this);
+      return;
     }
+    p = p->parentItem();
+  }
 }
 
 void QWindowItem::componentComplete()
 {
-    updateParentWindow();
-    _window->scene()->addItem(this);
-    if (!_window->parentWidget())
-        _window->initPosition();
+  updateParentWindow();
+  _window->scene()->addItem(this);
+  if (!_window->parentWidget())
+    _window->initPosition();
 
-    QDeclarativeItem::componentComplete();
+  QDeclarativeItem::componentComplete();
 
-    if (_delayedVisible) {
-        setVisible(true);
-    }
+  if (_delayedVisible) {
+    setVisible(true);
+  }
 }
 
 void QWindowItem::updateSize(QSize newSize)
 {
-    QDeclarativeItem::setSize(newSize);
-    emit sizeChanged();
+  QDeclarativeItem::setSize(newSize);
+  emit sizeChanged();
 }
 
 void QWindowItem::center()
 {
-    _window->center();
+  _window->center();
 }
 
 void QWindowItem::setX(int x)
 {
-    _x = x;
-    _window->move(x, _y);
+  _x = x;
+  _window->move(x, _y);
 }
 void QWindowItem::setY(int y)
 {
-    _y = y;
-    _window->move(_x, y);
+  _y = y;
+  _window->move(_x, y);
 }
 
 void QWindowItem::moveWindow(int x,int y, int lx, int ly)
 {
-    QPoint p = _window->mapToGlobal(QPoint(x,y));
-    p.setX(p.x() - lx);
-    p.setY(p.y() - ly);
-    _window->move(p);
+  QPoint p = _window->mapToGlobal(QPoint(x,y));
+  p.setX(p.x() - lx);
+  p.setY(p.y() - ly);
+  _window->move(p);
 }
 
 void QWindowItem::setHeight(int height)
 {
-    int menuBarHeight = _window->menuBar()->sizeHint().height();
-    if (menuBarHeight) menuBarHeight++;
-    _window->resize(width(), height+menuBarHeight);
-    QDeclarativeItem::setHeight(_window->height());
+  int menuBarHeight = _window->menuBar()->sizeHint().height();
+  if (menuBarHeight) menuBarHeight++;
+  _window->resize(width(), height+menuBarHeight);
+  QDeclarativeItem::setHeight(_window->height());
 }
 
 void QWindowItem::setMinimumHeight(int height)
 {
-    int menuBarHeight = _window->menuBar()->sizeHint().height();
-    if (menuBarHeight) menuBarHeight++;
-    _window->setMinimumHeight(height+menuBarHeight);
+  int menuBarHeight = _window->menuBar()->sizeHint().height();
+  if (menuBarHeight) menuBarHeight++;
+  _window->setMinimumHeight(height+menuBarHeight);
 }
 
 void QWindowItem::setMaximumHeight(int height)
 {
-    int menuBarHeight = _window->menuBar()->sizeHint().height();
-    if (menuBarHeight) menuBarHeight++;
-    _window->setMaximumHeight(height+menuBarHeight);
+  int menuBarHeight = _window->menuBar()->sizeHint().height();
+  if (menuBarHeight) menuBarHeight++;
+  _window->setMaximumHeight(height+menuBarHeight);
 }
 
 void QWindowItem::setWidth(int width)
 {
-    _window->resize(width, height());
-    QDeclarativeItem::setWidth(_window->width());
+  _window->resize(width, height());
+  QDeclarativeItem::setWidth(_window->width());
 }
 
 void QWindowItem::setTitle(QString title)
 {
-    _window->setWindowTitle(title);
-    emit titleChanged();
+  _window->setWindowTitle(title);
+  emit titleChanged();
 }
 
 void QWindowItem::setVisible(bool visible)
 {
-    _window->setWindowFlags(_window->windowFlags() | Qt::Window);
-    if (visible) {
-        if (isComponentComplete()) {
-            // avoid flickering when showing the widget,
-            // by passing the event loop at least once
-            QTimer::singleShot(1, _window, SLOT(show()));
-        } else {
-            _delayedVisible = true;
-        }
+  _window->setWindowFlags(_window->windowFlags() | Qt::Window);
+  if (visible) {
+    if (isComponentComplete()) {
+      // avoid flickering when showing the widget,
+      // by passing the event loop at least once
+      QTimer::singleShot(1, _window, SLOT(show()));
     } else {
-        _window->hide();
+      _delayedVisible = true;
     }
+  } else {
+    _window->hide();
+  }
 }
 
 void QWindowItem::setWindowDecoration(bool s)
@@ -219,32 +220,32 @@ void QWindowItem::setWindowDecoration(bool s)
 
 void QWindowItem::setModality(Qt::WindowModality modality)
 {
-    if (modality == _window->windowModality())
-        return;
+  if (modality == _window->windowModality())
+    return;
 
-    bool visible = _window->isVisible();
-    _window->hide();
-    _window->setWindowModality(modality);
+  bool visible = _window->isVisible();
+  _window->hide();
+  _window->setWindowModality(modality);
 
-    if (visible)
-        _window->show();
-    emit modalityChanged();
+  if (visible)
+    _window->show();
+  emit modalityChanged();
 }
 
 void QWindowItem::setDeleteOnClose(bool deleteOnClose)
 {
-    if (deleteOnClose == _deleteOnClose)
-        return;
-    _deleteOnClose = deleteOnClose;
-    emit deleteOnCloseChanged();
+  if (deleteOnClose == _deleteOnClose)
+    return;
+  _deleteOnClose = deleteOnClose;
+  emit deleteOnCloseChanged();
 }
 
 void QWindowItem::close()
 {
-    if (_deleteOnClose)
-        deleteLater();
-    else
-        _window->hide();
+  if (_deleteOnClose)
+    deleteLater();
+  else
+    _window->hide();
 }
 
 void QWindowItem::setTopMost(bool value)
