@@ -41,9 +41,16 @@
 #pragma once
 
 #include <QtCore/QObject>
+#include <QtCore/QVariantList>
 #include <QtWidgets/QDesktopWidget>
-#include <QtDeclarative/QDeclarative.h>
+#include <QtQuick/QQuickItem>
 
+/*!
+  \class QDesktopItem
+  \brief Позволяет получать гемотрию экрана и уведомления о изменениях.
+  \author Ilya.Tkachenko
+  \date 10.08.2012
+*/
 class QDesktopItem : public QObject
 {
     Q_OBJECT
@@ -64,6 +71,7 @@ public:
     Q_INVOKABLE QRect screenGeometry(int screen) const;
     Q_INVOKABLE int screenNumber(int xpos, int ypos) const;
     Q_INVOKABLE QRect availableGeometry(int screen) const;
+    Q_INVOKABLE QVariantList availableResolutions();
     int screenWidth() const;
     int screenHeight() const;
     int availableWidth() const;
