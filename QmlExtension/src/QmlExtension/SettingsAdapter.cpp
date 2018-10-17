@@ -5,7 +5,8 @@
 
 using P1::Settings::Settings;
 
-SettingsAdapter::SettingsAdapter(QObject* parent) : QObject(parent)
+SettingsAdapter::SettingsAdapter(QObject* parent)
+  : QObject(parent)
 {
 }
 
@@ -25,7 +26,7 @@ void SettingsAdapter::setValue(const QString& group, const QString& key, const Q
     settings.beginGroup(group);
     settings.setValue(key, value);
   } else {
-    QSettings settings("P1", "Qml viewer");
+    QSettings settings("ProtocolOne", "QmlViewer");
     settings.beginGroup(group);
     settings.setValue(key, value);
   }
@@ -39,7 +40,7 @@ QVariant SettingsAdapter::value(const QString& group, const QString& key, const 
     return settings.value(key, defaultValue);
   } 
 
-  QSettings settings("P1", "Qml viewer");
+  QSettings settings("ProtocolOne", "QmlViewer");
   settings.beginGroup(group);
   return settings.value(key, defaultValue);
 }
@@ -53,7 +54,7 @@ void SettingsAdapter::remove(const QString& group, const QString& key) const
         return;
     } 
 
-    QSettings settings("P1", "Qml viewer");
+    QSettings settings("ProtocolOne", "QmlViewer");
     settings.beginGroup(group);
     settings.remove(key);
 }

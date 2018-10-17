@@ -1,5 +1,5 @@
 #pragma once
-#include <QObject>
+#include <QtCore/QObject>
 
 #include <QtCore/QVariantList>
 #include <QtQuick/QQuickItem>

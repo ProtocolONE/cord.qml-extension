@@ -1,6 +1,8 @@
 #include <QmlExtension/SslWebSocketServer.h>
 #include <QmlExtension/SslWebSocket.h>
 
+#include <QtNetwork/QSslKey>
+
 #include <QtCore/QDebug>
 
 SslWebSocketServer::SslWebSocketServer(QObject *parent /*= 0*/)

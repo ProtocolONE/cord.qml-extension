@@ -2,7 +2,7 @@
 
 #include <QtCore/QUrl>
 #include <QtCore/QObject>
-#include <QQmlParserStatus>
+#include <QtQml/QQmlParserStatus>
 #include <QtWebSockets/QWebSocketServer>
 
 class SslWebSocket;

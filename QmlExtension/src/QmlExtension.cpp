@@ -11,7 +11,6 @@
 #include <QmlExtension/TaskList.h>
 #include <QmlExtension/MouseCursor.h>
 
-#include <QmlExtension/Auth/RegistryCredentialStorage.h>
 #include <QmlExtension/Host.h>
 #include <QmlExtension/StyleReader.h>
 #include <QmlExtension/Shortcut.h>
@@ -44,7 +43,6 @@ void QmlExtension::registerTypes(const char *uri)
   qmlRegisterUncreatableType<SettingsAdapter>("Tulip", 1, 0, "Settings", QLatin1String("Do not create objects of type Settings"));
   qmlRegisterUncreatableType<Host>("Tulip", 1, 0, "Host", QLatin1String("Do not create objects of type Host"));
 
-  qmlRegisterUncreatableType<P1::Auth::RegistryCredentialStorage>("Tulip", 1, 0, "CredentialStorage", QLatin1String("Do not create objects of type CredentialStorage"));
   qmlRegisterUncreatableType<GoogleAnalytics>("Tulip", 1, 0, "GoogleAnalyticsHelper", QLatin1String("Do not create objects of type GoogleAnalyticsHelper"));
   qmlRegisterUncreatableType<TrayWindow>("Tulip", 1, 0, "TrayWindow", QLatin1String("Do not create objects of type TrayWindow"));
   qmlRegisterUncreatableType<TaskList>("Tulip", 1, 0, "TaskList", QLatin1String("Do not create objects of type TaskList"));

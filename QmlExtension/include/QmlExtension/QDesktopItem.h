@@ -65,7 +65,8 @@ class QDesktopItem : public QObject
     Q_PROPERTY(QRect primaryScreenAvailableGeometry READ primaryScreenAvailableGeometry NOTIFY primaryScreenAvailableGeometryChanged)
 
 public:
-    QDesktopItem(QObject* obj);
+    explicit QDesktopItem(QObject* obj);
+    virtual ~QDesktopItem();
 
     int screenCount() const;
     Q_INVOKABLE QRect screenGeometry(int screen) const;

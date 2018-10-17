@@ -8,8 +8,8 @@ class GoogleAnalytics : public QObject
   Q_OBJECT
 
 public:
-  GoogleAnalytics(QObject* obj);
-  ~GoogleAnalytics();
+  explicit GoogleAnalytics(QObject* obj = nullptr);
+  virtual ~GoogleAnalytics();
 
   static GoogleAnalytics *qmlAttachedProperties(QObject *obj);
 

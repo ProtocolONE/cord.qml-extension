@@ -1,7 +1,7 @@
 #include <QmlExtension/Shortcut.h>
-#include <QKeyEvent>
-#include <QCoreApplication>
-#include <QDebug>
+#include <QtGui/QKeyEvent>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
 
 Shortcut::Shortcut(QObject *parent)
   : QObject(parent)
@@ -9,6 +9,10 @@ Shortcut::Shortcut(QObject *parent)
   , _keypressAlreadySend(false)
 {
   qApp->installEventFilter(this);
+}
+
+Shortcut::~Shortcut()
+{
 }
 
 void Shortcut::setKey(QVariant key)

@@ -8,8 +8,8 @@ class QFileDialogAdapter : public QObject
 {
   Q_OBJECT
 public:
-  QFileDialogAdapter(QObject* obj);
-  ~QFileDialogAdapter(void);
+  explicit QFileDialogAdapter(QObject* obj = nullptr);
+  virtual ~QFileDialogAdapter();
 
   static QFileDialogAdapter *qmlAttachedProperties(QObject *obj);
 

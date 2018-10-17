@@ -57,6 +57,10 @@ QDesktopItem::QDesktopItem(QObject* obj) : QObject(obj) {
     connect(QApplication::desktop(), SIGNAL(screenCountChanged(int)), this, SLOT(anythingChanged()));
 }
 
+QDesktopItem::~QDesktopItem()
+{
+}
+
 int QDesktopItem::screenCount() const
 {
     return QApplication::desktop()->screenCount();

@@ -1,9 +1,10 @@
 #pragma once
 
-#include <QObject>
-#include <QQmlParserStatus>
-#include <QtQml>
-#include <QScopedPointer>
+#include <QtCore/QObject>
+#include <QtCore/QScopedPointer>
+
+#include <QtQml/QQmlParserStatus>
+
 #include <QtWebSockets/QWebSocket>
 
 class SslWebSocket : public QObject, public QQmlParserStatus

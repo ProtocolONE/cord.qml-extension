@@ -10,7 +10,7 @@ class TextDocumentHelper : public QObject
   Q_OBJECT
 
 public:
-  explicit TextDocumentHelper(QObject* obj);
+  explicit TextDocumentHelper(QObject* obj = nullptr);
   virtual ~TextDocumentHelper();
 
   static TextDocumentHelper *qmlAttachedProperties(QObject *obj);

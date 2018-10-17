@@ -9,8 +9,8 @@ namespace P1 {
   {
     Q_OBJECT
   public:
-    MarketingAdapter(QObject* parent = 0);
-    ~MarketingAdapter();
+    explicit MarketingAdapter(QObject* parent = 0);
+    virtual ~MarketingAdapter();
 
     static MarketingAdapter *qmlAttachedProperties(QObject *obj);
 

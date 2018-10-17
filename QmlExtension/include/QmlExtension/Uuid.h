@@ -9,7 +9,7 @@ class Uuid : public QObject
   Q_OBJECT
 
 public:
-  explicit Uuid(QObject* parent);
+  explicit Uuid(QObject* parent = nullptr);
   virtual ~Uuid();
 
   static Uuid *qmlAttachedProperties(QObject *obj);

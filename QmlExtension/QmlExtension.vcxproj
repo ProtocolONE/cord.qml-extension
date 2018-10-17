@@ -132,7 +132,6 @@ $(QTDIR)\bin\lupdate.exe "$(ProjectDir)\." -ts "$(ProjectDir)\i18n\$(ProjectName
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtMoc Include="include\QmlExtension\Auth\RegistryCredentialStorage.h" />
     <QtMoc Include="include\QmlExtension\LocalStorage\LocalStorage.h" />
     <QtMoc Include="include\QmlExtension\LocalStorage\QmlSqlDatabaseData.h" />
     <QtMoc Include="include\QmlExtension\BrowserDetect.h" />
@@ -167,7 +166,6 @@ $(QTDIR)\bin\lupdate.exe "$(ProjectDir)\." -ts "$(ProjectDir)\i18n\$(ProjectName
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\QmlExtension.cpp" />
-    <ClCompile Include="src\QmlExtension\Auth\RegistryCredentialStorage.cpp" />
     <ClCompile Include="src\QmlExtension\browserdetect.cpp" />
     <ClCompile Include="src\QmlExtension\ClipboardAdapter.cpp" />
     <ClCompile Include="src\QmlExtension\ConfigReader.cpp" />

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QSystemTrayIcon.h>
+#include <QtWidgets/QSystemTrayIcon>
 #include <QtQuick/QQuickItem>
 
 class QMovie;

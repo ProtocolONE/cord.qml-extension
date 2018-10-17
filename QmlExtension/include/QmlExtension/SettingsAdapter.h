@@ -17,7 +17,7 @@ class SettingsAdapter : public QObject
   Q_OBJECT
 public:
   explicit SettingsAdapter(QObject* parent = 0);
-  ~SettingsAdapter();
+  virtual ~SettingsAdapter();
 
   Q_INVOKABLE void setValue(const QString& group, const QString& key, const QVariant& value) const;
   Q_INVOKABLE QVariant value(const QString& group, const QString& key, const QVariant& defaultValue = QVariant()) const;

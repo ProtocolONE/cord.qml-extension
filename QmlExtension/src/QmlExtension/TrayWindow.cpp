@@ -3,8 +3,6 @@
 #include <QtGui/QMovie>
 #include <QtGui/QCursor>
 
-#define SIGNAL_CONNECT_CHECK(X) { bool result = X; Q_ASSERT_X(result, __FUNCTION__ , #X); }
-
 TrayWindow::TrayWindow(QObject* parent) 
   : QObject(parent)
   , _systray(0)
@@ -29,8 +27,8 @@ void TrayWindow::install() {
 
   this->_systray = new QSystemTrayIcon(this);
 
-  SIGNAL_CONNECT_CHECK(connect(this->_systray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), 
-    this, SLOT(mouseClicked(QSystemTrayIcon::ActivationReason))));
+  QObject::connect(this->_systray, &QSystemTrayIcon::activated,
+    this, &TrayWindow::mouseClicked);
 }
 
 void TrayWindow::setToolTip(const QString& toolTip)
@@ -69,7 +67,8 @@ void TrayWindow::setAnimatedSource(const QString &source)
   }
 
   this->_animatedIcon = new QMovie(source);
-  connect(this->_animatedIcon, SIGNAL(frameChanged(int)), this, SLOT(updateIcon()));
+  QObject::connect(this->_animatedIcon, &QMovie::frameChanged,
+    this, &TrayWindow::updateIcon);
 
   this->_animatedIcon->start();
 }

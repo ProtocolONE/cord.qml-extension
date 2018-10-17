@@ -6,7 +6,7 @@ QFileDialogAdapter::QFileDialogAdapter(QObject* obj)
 {
 }
 
-QFileDialogAdapter::~QFileDialogAdapter(void)
+QFileDialogAdapter::~QFileDialogAdapter()
 {
 }
 

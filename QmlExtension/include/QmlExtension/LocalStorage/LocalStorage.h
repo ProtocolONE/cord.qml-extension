@@ -2,6 +2,7 @@
 
 #include <QtCore/QObject>
 #include <QtQuick/QQuickItem>
+
 #include <QmlExtension/LocalStorage/QmlSqlDatabaseData.h>
 
 class LocalStorage : public QObject

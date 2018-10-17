@@ -1,6 +1,6 @@
 #include <QmlExtension/GoogleAnalytics.h>
 #include <QtCore/QLocale>
-#include <QSysInfo>
+#include <QtCore/QSysInfo>
 
 #include <windows.h>
 
@@ -27,7 +27,8 @@ inline bool isWow64()
 }
 
 
-GoogleAnalytics::GoogleAnalytics(QObject* obj)  : QObject(obj)
+GoogleAnalytics::GoogleAnalytics(QObject* obj) 
+  : QObject(obj)
 {
 }
 

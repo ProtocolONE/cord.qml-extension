@@ -46,9 +46,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\Release\moc_QmlExtension.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\QmlExtension.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -115,9 +112,6 @@
     <ClCompile Include="src\QmlExtension\WheelArea.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\QmlExtension\Auth\RegistryCredentialStorage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\QmlExtension\LocalStorage\LocalStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -132,9 +126,6 @@
     <ResourceCompile Include="QmlExtension.rc" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="include\QmlExtension\Auth\RegistryCredentialStorage.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="include\QmlExtension\LocalStorage\LocalStorage.h">
       <Filter>Header Files</Filter>
     </QtMoc>

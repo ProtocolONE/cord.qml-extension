@@ -1,6 +1,7 @@
 #pragma once
 
-#include <QObject>
+#include <QtCore/QObject>
+#include <QtCore/QString>
 
 class QNetworkAccessManager;
 

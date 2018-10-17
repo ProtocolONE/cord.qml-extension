@@ -8,6 +8,7 @@ class Shortcut : public QObject
   Q_PROPERTY(QVariant key READ key WRITE setKey NOTIFY keyChanged)
 public:
   explicit Shortcut(QObject *parent = 0);
+  virtual ~Shortcut();
 
   void setKey(QVariant key);
   QVariant key() { return _keySequence; }
