@@ -227,5 +227,5 @@ bool ThemePack::checkDownloaded()
 QString ThemePack::targetFilePath()
 {
   QUrl sourceUri(this->_source);
-  return this->_targetFolder + sourceUri.fileName();
+  return this->_targetFolder + sourceUri.fileName() + ".themepack";
 }
